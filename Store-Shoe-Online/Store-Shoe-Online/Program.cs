@@ -13,7 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddTransient(typeof(IUserService), typeof(UserService));
 builder.Services.AddTransient(typeof(IRoleService), typeof(RoleService));
-builder.Services.AddTransient(typeof(IRoleService), typeof(RoleService));
+builder.Services.AddTransient(typeof(IConfirmEmailService), typeof(ConfirmEmailService));
 builder.Services.AddScoped<IUserEmailStore<ApplicationUser>, UserStore<ApplicationUser, IdentityRole, ApplicationDbContext, string>>();
 builder.Services.AddScoped<IUserRoleStore<ApplicationUser>, UserStore<ApplicationUser, IdentityRole, ApplicationDbContext, string>>();
 
@@ -36,6 +36,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IRoleRepository, RoleRepository>();
+builder.Services.AddScoped<IConfirmEmailRespository, ConfirmEmailRespository>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
