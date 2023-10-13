@@ -68,7 +68,7 @@ class Scene extends StatelessWidget {
                           width: 19.4*fem,
                           height: 10.67*fem,
                           child: Image.asset(
-                            'assets/design/images/mobile-signal-37W.png',
+                            'assets/design/images/mobile-signal-XVj.png',
                             width: 19.4*fem,
                             height: 10.67*fem,
                           ),
@@ -79,7 +79,7 @@ class Scene extends StatelessWidget {
                           width: 17.43*fem,
                           height: 10.97*fem,
                           child: Image.asset(
-                            'assets/design/images/wifi-zz4.png',
+                            'assets/design/images/wifi-GD7.png',
                             width: 17.43*fem,
                             height: 10.97*fem,
                           ),
@@ -90,7 +90,7 @@ class Scene extends StatelessWidget {
                           width: 24.5*fem,
                           height: 10.5*fem,
                           child: Image.asset(
-                            'assets/design/images/battery-ecG.png',
+                            'assets/design/images/battery-MAR.png',
                             width: 24.5*fem,
                             height: 10.5*fem,
                           ),
@@ -128,7 +128,7 @@ class Scene extends StatelessWidget {
                           width: 19*fem,
                           height: 19*fem,
                           child: Image.asset(
-                            'assets/design/images/component-1-SiC.png',
+                            'assets/design/images/component-1-9rh.png',
                             width: 19*fem,
                             height: 19*fem,
                           ),
@@ -172,7 +172,7 @@ class Scene extends StatelessWidget {
                                   children: [
                                     Container(
                                       // frame427323270Ksv (I699:3144;699:2713)
-                                      margin: EdgeInsets.fromLTRB(0*fem, 0*fem, 111*fem, 10*fem),
+                                      margin: EdgeInsets.fromLTRB(0*fem, 0*fem, 80*fem, 10*fem),
                                       width: double.infinity,
                                       child: Row(
                                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -184,7 +184,7 @@ class Scene extends StatelessWidget {
                                               width: 140*fem,
                                               height: 140*fem,
                                               child: Image.asset(
-                                                'assets/design/images/rectangle-39824-Lrt.png',
+                                                'assets/design/images/vuesax-linear-minus.png',
                                                 fit: BoxFit.cover,
                                               ),
                                             ),
@@ -430,222 +430,226 @@ class Scene extends StatelessWidget {
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Container(
-                            // frame427323273LnL (I699:3195;699:2967)
-                            margin: EdgeInsets.fromLTRB(0*fem, 0*fem, 36*fem, 0*fem),
-                            width: 377*fem,
-                            height: double.infinity,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
-                                  // frame427323270Gvt (I699:3195;699:2713)
-                                  margin: EdgeInsets.fromLTRB(0*fem, 0*fem, 117*fem, 10*fem),
-                                  width: double.infinity,
-                                  child: Row(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Container(
-                                        // rectangle39824bTN (I699:3195;699:2682)
-                                        margin: EdgeInsets.fromLTRB(0*fem, 0*fem, 18*fem, 0*fem),
-                                        width: 140*fem,
-                                        height: 140*fem,
-                                        child: Image.asset(
-                                          'assets/design/images/rectangle-39824-5Pn.png',
-                                          fit: BoxFit.cover,
+                          Flexible(
+                            child: Container(
+                              // frame427323273LnL (I699:3195;699:2967)
+                              margin: EdgeInsets.fromLTRB(0*fem, 0*fem, 36*fem, 0*fem),
+                              width: 377*fem,
+                              height: double.infinity,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    // frame427323270Gvt (I699:3195;699:2713)
+                                    margin: EdgeInsets.fromLTRB(0*fem, 0*fem, 117*fem, 10*fem),
+                                    width: double.infinity,
+                                    child: Row(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Flexible(
+                                          child: Container(
+                                            // rectangle39824bTN (I699:3195;699:2682)
+                                            margin: EdgeInsets.fromLTRB(0*fem, 0*fem, 18*fem, 0*fem),
+                                            width: 140*fem,
+                                            height: 140*fem,
+                                            child: Image.asset(
+                                              'assets/design/images/rectangle-39824-5Pn.png',
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
                                         ),
-                                      ),
-                                      Container(
-                                        // frame4273232656f2 (I699:3195;699:2683)
-                                        width: 102*fem,
-                                        child: Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                            Container(
-                                              // frame427323264rPJ (I699:3195;699:2684)
-                                              margin: EdgeInsets.fromLTRB(0*fem, 0*fem, 0*fem, 22*fem),
-                                              width: double.infinity,
-                                              child: Column(
-                                                crossAxisAlignment: CrossAxisAlignment.start,
-                                                children: [
-                                                  Container(
-                                                    // frame427323262CTA (I699:3195;699:2685)
-                                                    margin: EdgeInsets.fromLTRB(0*fem, 0*fem, 0*fem, 12*fem),
-                                                    width: double.infinity,
-                                                    child: Column(
-                                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                                      children: [
-                                                        Container(
-                                                          // nikewaffledebut8rc (I699:3195;699:2686)
-                                                          margin: EdgeInsets.fromLTRB(0*fem, 0*fem, 0*fem, 3*fem),
-                                                          child: Text(
-                                                            'Nike Air Max 97',
-                                                            style: SafeGoogleFont (
-                                                              'Roboto',
-                                                              fontSize: 14*ffem,
-                                                              fontWeight: FontWeight.w500,
-                                                              height: 1.1725*ffem/fem,
-                                                              color: Color(0xff000000),
+                                        Container(
+                                          // frame4273232656f2 (I699:3195;699:2683)
+                                          width: 102*fem,
+                                          child: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              Container(
+                                                // frame427323264rPJ (I699:3195;699:2684)
+                                                margin: EdgeInsets.fromLTRB(0*fem, 0*fem, 0*fem, 22*fem),
+                                                width: double.infinity,
+                                                child: Column(
+                                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                                  children: [
+                                                    Container(
+                                                      // frame427323262CTA (I699:3195;699:2685)
+                                                      margin: EdgeInsets.fromLTRB(0*fem, 0*fem, 0*fem, 12*fem),
+                                                      width: double.infinity,
+                                                      child: Column(
+                                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                                        children: [
+                                                          Container(
+                                                            // nikewaffledebut8rc (I699:3195;699:2686)
+                                                            margin: EdgeInsets.fromLTRB(0*fem, 0*fem, 0*fem, 3*fem),
+                                                            child: Text(
+                                                              'Nike Air Max 97',
+                                                              style: SafeGoogleFont (
+                                                                'Roboto',
+                                                                fontSize: 14*ffem,
+                                                                fontWeight: FontWeight.w500,
+                                                                height: 1.1725*ffem/fem,
+                                                                color: Color(0xff000000),
+                                                              ),
                                                             ),
                                                           ),
-                                                        ),
-                                                        Container(
-                                                          // frame427323261E8x (I699:3195;699:2687)
-                                                          width: double.infinity,
-                                                          height: 33*fem,
-                                                          child: Stack(
-                                                            children: [
-                                                              Positioned(
-                                                                // mensshoesx4x (I699:3195;699:2688)
-                                                                left: 0*fem,
-                                                                top: 0*fem,
-                                                                child: Align(
-                                                                  child: SizedBox(
-                                                                    width: 79*fem,
-                                                                    height: 17*fem,
-                                                                    child: Text(
-                                                                      'Men’s Shoes',
-                                                                      style: SafeGoogleFont (
-                                                                        'Roboto',
-                                                                        fontSize: 14*ffem,
-                                                                        fontWeight: FontWeight.w400,
-                                                                        height: 1.1725*ffem/fem,
-                                                                        color: Color(0xff8d8d8d),
+                                                          Container(
+                                                            // frame427323261E8x (I699:3195;699:2687)
+                                                            width: double.infinity,
+                                                            height: 33*fem,
+                                                            child: Stack(
+                                                              children: [
+                                                                Positioned(
+                                                                  // mensshoesx4x (I699:3195;699:2688)
+                                                                  left: 0*fem,
+                                                                  top: 0*fem,
+                                                                  child: Align(
+                                                                    child: SizedBox(
+                                                                      width: 79*fem,
+                                                                      height: 17*fem,
+                                                                      child: Text(
+                                                                        'Men’s Shoes',
+                                                                        style: SafeGoogleFont (
+                                                                          'Roboto',
+                                                                          fontSize: 14*ffem,
+                                                                          fontWeight: FontWeight.w400,
+                                                                          height: 1.1725*ffem/fem,
+                                                                          color: Color(0xff8d8d8d),
+                                                                        ),
                                                                       ),
                                                                     ),
                                                                   ),
                                                                 ),
-                                                              ),
-                                                              Positioned(
-                                                                // frame427323260qPe (I699:3195;699:2689)
-                                                                left: 0*fem,
-                                                                top: 16*fem,
-                                                                child: Container(
-                                                                  width: 102*fem,
-                                                                  height: 17*fem,
-                                                                  child: Row(
-                                                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                                                    children: [
-                                                                      Text(
-                                                                        // blackm2Q (I699:3195;699:2690)
-                                                                        'White',
-                                                                        style: SafeGoogleFont (
-                                                                          'Roboto',
-                                                                          fontSize: 14*ffem,
-                                                                          fontWeight: FontWeight.w400,
-                                                                          height: 1.1725*ffem/fem,
-                                                                          color: Color(0xff8d8d8d),
+                                                                Positioned(
+                                                                  // frame427323260qPe (I699:3195;699:2689)
+                                                                  left: 0*fem,
+                                                                  top: 16*fem,
+                                                                  child: Container(
+                                                                    width: 102*fem,
+                                                                    height: 17*fem,
+                                                                    child: Row(
+                                                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                                                      children: [
+                                                                        Text(
+                                                                          // blackm2Q (I699:3195;699:2690)
+                                                                          'White',
+                                                                          style: SafeGoogleFont (
+                                                                            'Roboto',
+                                                                            fontSize: 14*ffem,
+                                                                            fontWeight: FontWeight.w400,
+                                                                            height: 1.1725*ffem/fem,
+                                                                            color: Color(0xff8d8d8d),
+                                                                          ),
                                                                         ),
-                                                                      ),
-                                                                      SizedBox(
-                                                                        width: 8*fem,
-                                                                      ),
-                                                                      Text(
-                                                                        // hAx (I699:3195;699:2691)
-                                                                        '|',
-                                                                        style: SafeGoogleFont (
-                                                                          'Roboto',
-                                                                          fontSize: 14*ffem,
-                                                                          fontWeight: FontWeight.w400,
-                                                                          height: 1.1725*ffem/fem,
-                                                                          color: Color(0xff8d8d8d),
+                                                                        SizedBox(
+                                                                          width: 8*fem,
                                                                         ),
-                                                                      ),
-                                                                      SizedBox(
-                                                                        width: 8*fem,
-                                                                      ),
-                                                                      Text(
-                                                                        // size42SPS (I699:3195;699:2692)
-                                                                        'Size 42',
-                                                                        style: SafeGoogleFont (
-                                                                          'Roboto',
-                                                                          fontSize: 14*ffem,
-                                                                          fontWeight: FontWeight.w400,
-                                                                          height: 1.1725*ffem/fem,
-                                                                          color: Color(0xff8d8d8d),
+                                                                        Text(
+                                                                          // hAx (I699:3195;699:2691)
+                                                                          '|',
+                                                                          style: SafeGoogleFont (
+                                                                            'Roboto',
+                                                                            fontSize: 14*ffem,
+                                                                            fontWeight: FontWeight.w400,
+                                                                            height: 1.1725*ffem/fem,
+                                                                            color: Color(0xff8d8d8d),
+                                                                          ),
                                                                         ),
-                                                                      ),
-                                                                    ],
+                                                                        SizedBox(
+                                                                          width: 8*fem,
+                                                                        ),
+                                                                        Text(
+                                                                          // size42SPS (I699:3195;699:2692)
+                                                                          'Size 42',
+                                                                          style: SafeGoogleFont (
+                                                                            'Roboto',
+                                                                            fontSize: 14*ffem,
+                                                                            fontWeight: FontWeight.w400,
+                                                                            height: 1.1725*ffem/fem,
+                                                                            color: Color(0xff8d8d8d),
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
                                                                   ),
                                                                 ),
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                  Container(
-                                                    // frame427323263zQx (I699:3195;699:2693)
-                                                    child: Row(
-                                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                                      children: [
-                                                        Container(
-                                                          // vuesaxlinearminuscirlce9oe (I699:3195;699:2694)
-                                                          width: 24.45*fem,
-                                                          height: 24*fem,
-                                                          child: Image.asset(
-                                                            'assets/design/images/vuesax-linear-minus-cirlce-BxU.png',
-                                                            width: 24.45*fem,
-                                                            height: 24*fem,
-                                                          ),
-                                                        ),
-                                                        SizedBox(
-                                                          width: 8.07*fem,
-                                                        ),
-                                                        Container(
-                                                          // pet (I699:3195;699:2700)
-                                                          margin: EdgeInsets.fromLTRB(0*fem, 1*fem, 0*fem, 0*fem),
-                                                          child: Text(
-                                                            '1',
-                                                            textAlign: TextAlign.center,
-                                                            style: SafeGoogleFont (
-                                                              'Inter',
-                                                              fontSize: 16*ffem,
-                                                              fontWeight: FontWeight.w500,
-                                                              height: 1.2125*ffem/fem,
-                                                              color: Color(0xff000000),
+                                                              ],
                                                             ),
                                                           ),
-                                                        ),
-                                                        SizedBox(
-                                                          width: 8.07*fem,
-                                                        ),
-                                                        Container(
-                                                          // vuesaxlinearaddcircleWXi (I699:3195;699:2701)
-                                                          width: 24.45*fem,
-                                                          height: 24*fem,
-                                                          child: Image.asset(
-                                                            'assets/design/images/vuesax-linear-add-circle-7ax.png',
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    Container(
+                                                      // frame427323263zQx (I699:3195;699:2693)
+                                                      child: Row(
+                                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                                        children: [
+                                                          Container(
+                                                            // vuesaxlinearminuscirlce9oe (I699:3195;699:2694)
                                                             width: 24.45*fem,
                                                             height: 24*fem,
+                                                            child: Image.asset(
+                                                              'assets/design/images/vuesax-linear-minus-cirlce-BxU.png',
+                                                              width: 24.45*fem,
+                                                              height: 24*fem,
+                                                            ),
                                                           ),
-                                                        ),
-                                                      ],
+                                                          SizedBox(
+                                                            width: 8.07*fem,
+                                                          ),
+                                                          Container(
+                                                            // pet (I699:3195;699:2700)
+                                                            margin: EdgeInsets.fromLTRB(0*fem, 1*fem, 0*fem, 0*fem),
+                                                            child: Text(
+                                                              '1',
+                                                              textAlign: TextAlign.center,
+                                                              style: SafeGoogleFont (
+                                                                'Inter',
+                                                                fontSize: 16*ffem,
+                                                                fontWeight: FontWeight.w500,
+                                                                height: 1.2125*ffem/fem,
+                                                                color: Color(0xff000000),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          SizedBox(
+                                                            width: 8.07*fem,
+                                                          ),
+                                                          Container(
+                                                            // vuesaxlinearaddcircleWXi (I699:3195;699:2701)
+                                                            width: 24.45*fem,
+                                                            height: 24*fem,
+                                                            child: Image.asset(
+                                                              'assets/design/images/vuesax-linear-add-circle-7ax.png',
+                                                              width: 24.45*fem,
+                                                              height: 24*fem,
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
                                                     ),
-                                                  ),
-                                                ],
+                                                  ],
+                                                ),
                                               ),
-                                            ),
-                                            Text(
-                                              // CvL (I699:3195;699:2708)
-                                              '\$165',
-                                              textAlign: TextAlign.right,
-                                              style: SafeGoogleFont (
-                                                'Roboto',
-                                                fontSize: 16*ffem,
-                                                fontWeight: FontWeight.w500,
-                                                height: 1.1725*ffem/fem,
-                                                color: Color(0xff000000),
+                                              Text(
+                                                // CvL (I699:3195;699:2708)
+                                                '\$165',
+                                                textAlign: TextAlign.right,
+                                                style: SafeGoogleFont (
+                                                  'Roboto',
+                                                  fontSize: 16*ffem,
+                                                  fontWeight: FontWeight.w500,
+                                                  height: 1.1725*ffem/fem,
+                                                  color: Color(0xff000000),
+                                                ),
                                               ),
-                                            ),
-                                          ],
+                                            ],
+                                          ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
                           Container(

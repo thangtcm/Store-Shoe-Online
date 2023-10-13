@@ -14,7 +14,11 @@ import 'package:get/get_navigation/get_navigation.dart';
 // import 'package:flutter_store_shoe/views/favourites-edit.dart';
 // import 'package:flutter_store_shoe/views/add-to-bag.dart';
 // import 'package:flutter_store_shoe/views/add-to-bag-success.dart';
-import 'package:flutter_store_shoe/views/bag.dart';
+// import 'package:flutter_store_shoe/views/bag.dart';
+// import 'package:flutter_store_shoe/views/bag-no-item.dart';
+// import 'package:flutter_store_shoe/views/check-out-delivery.dart';
+// import 'package:flutter_store_shoe/views/check-out-payment-no-show-info.dart';
+import 'package:flutter_store_shoe/views/check-out-payment-show-info.dart';
 
 void main() {
   runApp(const MyApp());
