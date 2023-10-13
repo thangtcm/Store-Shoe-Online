@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:ui';
-import 'package:frontend_shop/shared/utils.dart';
+import 'package:flutter_store_shoe/utils/utils.dart';
 
 class Scene extends StatelessWidget {
   @override

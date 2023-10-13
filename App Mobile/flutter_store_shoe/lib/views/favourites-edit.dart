@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'dart:ui';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:frontend_shop/shared/utils.dart';
+import 'package:flutter_store_shoe/utils/utils.dart';
 
 class Scene extends StatelessWidget {
   @override
