@@ -246,7 +246,7 @@ class Scene extends StatelessWidget {
                           width: 24*fem,
                           height: 24*fem,
                           child: Image.asset(
-                            'assets/design/images/component-1-SSc.png',
+                            'assets/design/images/component-1-ENc.png',
                             width: 24*fem,
                             height: 24*fem,
                           ),
