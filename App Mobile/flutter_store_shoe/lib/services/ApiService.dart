@@ -1,31 +1,46 @@
-// ignore_for_file: file_names
+// ignore_for_file: file_names, avoid_print
+
+import 'dart:convert';
+import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:flutter_store_shoe/models/ApiResponse.dart';
 import 'package:flutter_store_shoe/models/UserInfoVM.dart';
+import 'package:flutter_store_shoe/utils/apiurl.dart';
 
 class ApiService {
-  final Dio dio = Dio();
+  static final _dio = Dio();
 
-  Future<UserInfoVM> login(String userName, String password) async {
-    print('run');
-    final response = await dio.post(
-        'http://thangepedoan-001-site1.ftempurl.com/api/Account/Login',
-        data: {
-          "UserName": userName,
-          "Password": password,
-        });
-    dio.interceptors.add(LogInterceptor(requestBody: true, responseBody: true));
-    print(response.statusCode);
-    if (response.statusCode == 200) {
-      final data = response.data;
-      // ignore: avoid_print
-      print(data);
-      return UserInfoVM.fromJson(data['data']);
-    } else {
-      final data = response.data;
-      // ignore: avoid_print
-      print(data);
-      throw Exception('Lỗi: ${data['description']}');
+  static Future<ApiResponse<UserInfoVM>> login(
+      String userName, String password) async {
+    final requestData = {
+      'UserName': userName,
+      'Password': password,
+    };
+    try {
+      final response = await _dio.post(
+        apiLogin,
+        options: Options(headers: {
+          HttpHeaders.contentTypeHeader: 'application/json',
+        }),
+        data: jsonEncode(requestData),
+      );
+      if (response.statusCode == 200) {
+        final responseData = ApiResponse.fromJson(response.data,
+            (json) => UserInfoVM.fromJson(json), response.statusCode);
+        return responseData;
+      } else {
+        final errorResponse = ApiResponse.fromJson(response.data,
+            (json) => UserInfoVM.fromJson(json), response.statusCode);
+        return errorResponse;
+      }
+    } catch (error) {
+      return ApiResponse<UserInfoVM>(
+        code: 'Error',
+        description: 'Lỗi không xác định',
+        data: UserInfoVM(),
+        statusCode: 404,
+      );
     }
   }
 }
