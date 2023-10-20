@@ -4,3 +4,6 @@ export './images.dart';
 export './strings.dart';
 export 'package:dio/dio.dart';
 export 'dart:convert';
+export './sizes.dart';
+export './apiurl.dart';
+export './gifs.dart';
