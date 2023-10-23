@@ -52,29 +52,45 @@ class ApiResponseList<T> {
 }
 
 class ApiResponseListPage<T> {
-  String? code;
-  String? description;
+  String code;
+  String description;
+  ApiResponseData<T> data;
   int? statusCode;
+
+  ApiResponseListPage(
+      {required this.code,
+      required this.description,
+      required this.data,
+      this.statusCode});
+
+  factory ApiResponseListPage.fromJson(Map<String, dynamic> json,
+      T Function(Map<String, dynamic>) fromJson, int? statusCode) {
+    return ApiResponseListPage(
+        code: json['code'],
+        description: json['description'],
+        data: ApiResponseData.fromJson(json['data'], fromJson),
+        statusCode: statusCode);
+  }
+}
+
+class ApiResponseData<T> {
   List<T> data;
   int maxPage;
 
-  ApiResponseListPage(
-      {this.code,
-      this.description,
-      required this.data,
-      required this.maxPage,
-      this.statusCode});
+  ApiResponseData({
+    required this.data,
+    required this.maxPage,
+  });
 
-  factory ApiResponseListPage.fromJsonList(Map<String, dynamic> json,
-      T Function(Map<String, dynamic>) fromJson, int? statusCode) {
-    final List<dynamic> dataList = json['data']['data'];
+  factory ApiResponseData.fromJson(
+    Map<String, dynamic> json,
+    T Function(Map<String, dynamic>) fromJson,
+  ) {
+    final List<dynamic> dataList = json['data'] ?? [];
     final List<T> items = dataList.map((item) => fromJson(item)).toList();
-    return ApiResponseListPage(
-      code: json['code'],
-      description: json['description'],
-      statusCode: statusCode,
+    return ApiResponseData(
       data: items,
-      maxPage: json['data']['maxPage'],
+      maxPage: json['maxPage'] ?? 0,
     );
   }
 }

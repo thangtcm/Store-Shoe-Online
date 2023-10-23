@@ -19,9 +19,10 @@ class HomeProductView extends StatelessWidget {
           Header("Home"),
           Container(
             padding: const EdgeInsets.only(top: 5),
-            child: FittedBox(
-              fit: BoxFit.fitWidth,
-              child: Image.asset(header_home),
+            child: Image.network(
+              'https://thangepedoan-001-site1.ftempurl.com/Image/075f84905c88bfebaa42b036dc8ae708.gif',
+              width: double.infinity,
+              fit: BoxFit.contain,
             ),
           ),
           Container(

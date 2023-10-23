@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const MainLayout(),
+      home: const LoginView(),
       builder: EasyLoading.init(),
     );
   }

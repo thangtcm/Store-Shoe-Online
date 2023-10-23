@@ -63,8 +63,12 @@ namespace Store_Shoe_Online.Services
         public async Task<ICollection<Product>> GetListAsync()
             => await _unitOfWork.ProductRepository.GetAllAsync();
 
-        public async Task<ICollection<Product>> GetListAsync(Func<IQueryable<Product>, IIncludableQueryable<Product, object>> includes)
-            => await _unitOfWork.ProductRepository.GetAllAsync(null, includes);
+        public async Task<ICollection<Product>> GetListAsync(int categoryId, Func<IQueryable<Product>, IIncludableQueryable<Product, object>> includes)
+        {
+            if (categoryId == 0)
+                return await _unitOfWork.ProductRepository.GetAllAsync(null, includes);
+            return await _unitOfWork.ProductRepository.GetAllAsync(x => x.CategoryId == categoryId, includes);
+        }
 
         public async Task Remove(int Id)
         {

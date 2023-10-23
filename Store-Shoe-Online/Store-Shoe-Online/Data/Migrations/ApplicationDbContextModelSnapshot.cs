@@ -51,7 +51,7 @@ namespace Store_Shoe_Online.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "5cef2882-97ce-465e-8b04-3ec283af002a",
+                            Id = "7abc51e3-18ed-4820-958c-9874b4923021",
                             Name = "Administrator",
                             NormalizedName = "Administrator"
                         });
@@ -149,7 +149,7 @@ namespace Store_Shoe_Online.Data.Migrations
                         new
                         {
                             UserId = "8722be98-3f9d-49a6-b9d6-325c45b22947",
-                            RoleId = "5cef2882-97ce-465e-8b04-3ec283af002a"
+                            RoleId = "7abc51e3-18ed-4820-958c-9874b4923021"
                         });
                 });
 
@@ -283,6 +283,28 @@ namespace Store_Shoe_Online.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Category");
+                });
+
+            modelBuilder.Entity("Store_Shoe_Online.Models.ConfirmEmail", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("Code")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("EndTime")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ConfirmEmail");
                 });
 
             modelBuilder.Entity("Store_Shoe_Online.Models.Order", b =>

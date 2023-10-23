@@ -33,6 +33,14 @@ class UserInfoVM {
     );
   }
 
+  Map<String, dynamic> toJson() => {
+        "userName": userName,
+        "email": email,
+        "numberPhone": numberPhone,
+        "fullName": fullName,
+        "password": password
+      };
+
   Future<void> saveToPrefs() async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString('userId', userId ?? '');
@@ -44,7 +52,6 @@ class UserInfoVM {
     await prefs.setString('passwordOld', passwordOld ?? '');
   }
 
-  // Tạo một đối tượng UserInfoVM từ SharedPreferences
   factory UserInfoVM.fromPrefs(SharedPreferences prefs) {
     return UserInfoVM(
       userId: prefs.getString('userId'),

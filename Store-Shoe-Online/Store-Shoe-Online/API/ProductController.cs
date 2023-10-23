@@ -25,11 +25,11 @@ namespace Store_Shoe_Online.API
         }
 
         [HttpGet("GetProducts")]
-        public async Task<IActionResult> GetProducts(int? page)
+        public async Task<IActionResult> GetProducts(int categoryId, int? page)
         {
             try
             {
-                var products = await _productService.GetListAsync(x => x.Include(x => x.Details!));
+                var products = await _productService.GetListAsync(categoryId, x => x.Include(x => x.Details!));
                 int pagesize = 10;
                 int maxpage = (products.Count / pagesize) + (products.Count % 10 == 0 ? 0 : 1);
                 int pagenumber = page == null || page < 0 ? 1 : page.Value;

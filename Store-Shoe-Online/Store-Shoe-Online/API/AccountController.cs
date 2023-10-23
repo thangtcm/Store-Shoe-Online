@@ -207,7 +207,7 @@ namespace Store_Shoe_Online.API
                 Random random = new();
                 var code = random.Next(1000, 9999);
                 var emailConfirmResult = await _confirmEmailService.Add(model.Email, code);
-                await _emailSender.SendEmailAsync(model.Email, "[LuyenToan.Online] Xác nhận email", CallBack.GetMailHtml(model.Email, model.FullName, code));
+                await _emailSender.SendEmailAsync(model.Email, "[Cửa hàng bán giày] Xác nhận email", CallBack.GetMailHtml(model.Email, model.FullName, code));
                 return StatusCode(StatusCodes.Status200OK, ResponseResult.CreateResponse("Success", "Hệ thống đã gửi email xác thực thành công"));
             }
             catch (Exception ex)

@@ -28,6 +28,7 @@ namespace Store_Shoe_Online.Data
         public DbSet<Order>? Order { get; set; }
         public DbSet<OrderDetail>? OrderDetail { get; set; }
         public DbSet<ProductDetail>? ProductDetails { get; set; }
+        public DbSet<ConfirmEmail>? ConfirmEmail { get; set; }
         private void SeedRoles(ModelBuilder builder)
         {
             builder.Entity<IdentityRole>().HasData

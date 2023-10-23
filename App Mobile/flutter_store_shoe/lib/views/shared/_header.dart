@@ -29,12 +29,12 @@ class Header extends StatelessWidget {
             style: const TextStyle(color: Colors.white),
           ),
           badgeStyle: const badges.BadgeStyle(
-            badgeColor: Colors.blue,
+            badgeColor: Colors.blueAccent,
           ),
           child: const Icon(
             Icons.shopping_cart_outlined,
             size: 25,
-            color: Colors.blue,
+            color: Colors.black,
           ),
           badgeAnimation: const badges.BadgeAnimation.scale(
             animationDuration: Duration(seconds: 1),
