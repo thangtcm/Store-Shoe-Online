@@ -1,6 +1,9 @@
-﻿namespace Store_Shoe_Online.Repository.Interface
+﻿using Store_Shoe_Online.Models;
+using Store_Shoe_Online.Repository.GenericRepository;
+
+namespace Store_Shoe_Online.Repository.Interface
 {
-    public interface ICategoryRepository
+    public interface ICategoryRepository : IGenericRepository<Category>
     {
     }
 }

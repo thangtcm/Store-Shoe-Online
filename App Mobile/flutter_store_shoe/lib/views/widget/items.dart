@@ -1,49 +1,104 @@
 // ignore_for_file: unused_local_variable
 
 import 'package:flutter/material.dart';
+import 'package:flutter_store_shoe/models/ProductInfoVM.dart';
 import 'package:flutter_store_shoe/utils/images.dart';
-import 'package:flutter_store_shoe/utils/sizes.dart';
 
-class ItemsWidger extends StatelessWidget {
+typedef ProductCardOnTaped = void Function(Product data);
+
+class ProductCard extends StatelessWidget {
+  const ProductCard({super.key, required this.data, this.ontap});
+
+  final Product data;
+  final ProductCardOnTaped? ontap;
+
   @override
   Widget build(BuildContext context) {
-    return GridView.count(
-      physics: const NeverScrollableScrollPhysics(),
-      childAspectRatio: 0.8,
-      crossAxisCount: 2,
-      shrinkWrap: true,
-      children: [
-        Container(
-          // ScreenSize.height(context: context) * 0.1
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-          ),
-          child: Container(
-            margin: const EdgeInsets.symmetric(vertical: 0, horizontal: 10),
-            color: const Color(0xFFF6F6F6),
-            child: Column(
+    // final data = datas[index % datas.length];
+    const borderRadius = BorderRadius.all(Radius.circular(20));
+    return InkWell(
+      borderRadius: borderRadius,
+      onTap: () => ontap?.call(data),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            decoration: const BoxDecoration(
+              borderRadius: borderRadius,
+              color: Color(0xFFeeeeee),
+            ),
+            child: Stack(
               children: [
-                const Padding(
-                  padding: EdgeInsets.only(top: 5, left: 10, right: 10),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Icon(
-                        Icons.favorite_border,
-                        color: Colors.red,
-                      )
-                    ],
-                  ),
-                ),
-                InkWell(
-                  onTap: () {},
-                  child: Image.asset(
-                    imgItemDeafult,
-                    height: 150,
-                    fit: BoxFit.fitHeight,
-                  ),
+                Image.network(data.productDescription),
+                Positioned(
+                  top: 16,
+                  right: 16,
+                  child: Image.asset('assets/icons/not_collected@2x.png',
+                      width: 28, height: 28),
                 )
               ],
+            ),
+          ),
+          const SizedBox(height: 12),
+          FittedBox(
+            child: Text(
+              data.productName,
+              style: const TextStyle(
+                color: Color(0xFF212121),
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+              ),
+            ),
+          ),
+          const SizedBox(height: 10),
+          _buildSoldPoint(4.5, 6937),
+          const SizedBox(height: 10),
+          Text(
+            '\$${5.0.toStringAsFixed(2)}',
+            style: const TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF212121)),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget _buildSoldPoint(double star, int sold) {
+    return Row(
+      children: [
+        Image.asset('assets/icons/start@2x.png', width: 20, height: 20),
+        const SizedBox(width: 8),
+        Text(
+          '$star',
+          style: const TextStyle(
+            color: Color(0xFF616161),
+            fontSize: 14,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+        const SizedBox(width: 8),
+        const Text(
+          '|',
+          style: TextStyle(
+              fontWeight: FontWeight.w500,
+              color: Color(0xFF616161),
+              fontSize: 14),
+        ),
+        const SizedBox(width: 8),
+        Container(
+          decoration: BoxDecoration(
+            borderRadius: const BorderRadius.all(Radius.circular(6)),
+            color: const Color(0xFF101010).withOpacity(0.08),
+          ),
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+          child: Text(
+            '$sold sold',
+            style: const TextStyle(
+              color: Color(0xFF35383F),
+              fontWeight: FontWeight.w500,
+              fontSize: 10,
             ),
           ),
         ),

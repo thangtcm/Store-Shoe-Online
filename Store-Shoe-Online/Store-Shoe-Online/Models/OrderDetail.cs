@@ -8,12 +8,13 @@ namespace Store_Shoe_Online.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public int ProductId { get; set; }
+        public int ProductDetailId { get; set; }
         [ForeignKey("ProductId")]
-        public Product? Product { get; set; }
+        public ProductDetail? ProductDetail { get; set; }
         public int OrderId { get; set; }
         [ForeignKey("OrderId")]
         public Order? Order { get; set; }
+        public int Size { get; set; }
         public int Amount { get; set; }
         public double Price { get; set; }
     }

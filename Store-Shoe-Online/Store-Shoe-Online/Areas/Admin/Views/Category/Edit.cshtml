@@ -1,0 +1,53 @@
+﻿@model Store_Shoe_Online.Models.Category
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<section id="multiple-column-form">
+    <div class="row match-height">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Multiple Column</h4>
+                </div>
+                <div class="card-content">
+                    <div class="card-body">
+                        <form class="form" data-parsley-validate asp-action="Edit">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <input type="hidden" asp-for="Id" />
+                            <div class="row">
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group mandatory">
+                                        <label asp-for="CategoryName" class="form-label"></label>
+                                        <input asp-for="CategoryName" class="form-control" />
+                                        <span asp-validation-for="CategoryName" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label asp-for="CategoryDescription" class="form-label"></label>
+                                        <input asp-for="CategoryDescription" class="form-control" />
+                                        <span asp-validation-for="CategoryDescription" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 d-flex justify-content-end">
+                                    <button type="submit" class="btn btn-primary me-1 mb-1">
+                                        Submit
+                                    </button>
+                                    <button type="reset"
+                                            class="btn btn-light-secondary me-1 mb-1">
+                                        Reset
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

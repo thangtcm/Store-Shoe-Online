@@ -4,7 +4,10 @@ D:\Store-Shoe-Online\Store-Shoe-Online\Store-Shoe-Online\obj\Release\net6.0\PubT
 D:\Store-Shoe-Online\Store-Shoe-Online\Store-Shoe-Online\obj\Release\net6.0\PubTmp\Out\Store-Shoe-Online.dll
 D:\Store-Shoe-Online\Store-Shoe-Online\Store-Shoe-Online\obj\Release\net6.0\PubTmp\Out\Store-Shoe-Online.runtimeconfig.json
 D:\Store-Shoe-Online\Store-Shoe-Online\Store-Shoe-Online\obj\Release\net6.0\PubTmp\Out\Store-Shoe-Online.pdb
+D:\Store-Shoe-Online\Store-Shoe-Online\Store-Shoe-Online\obj\Release\net6.0\PubTmp\Out\BouncyCastle.Cryptography.dll
 D:\Store-Shoe-Online\Store-Shoe-Online\Store-Shoe-Online\obj\Release\net6.0\PubTmp\Out\Humanizer.dll
+D:\Store-Shoe-Online\Store-Shoe-Online\Store-Shoe-Online\obj\Release\net6.0\PubTmp\Out\JetBrains.Annotations.dll
+D:\Store-Shoe-Online\Store-Shoe-Online\Store-Shoe-Online\obj\Release\net6.0\PubTmp\Out\MailKit.dll
 D:\Store-Shoe-Online\Store-Shoe-Online\Store-Shoe-Online\obj\Release\net6.0\PubTmp\Out\MessagePack.dll
 D:\Store-Shoe-Online\Store-Shoe-Online\Store-Shoe-Online\obj\Release\net6.0\PubTmp\Out\MessagePack.Annotations.dll
 D:\Store-Shoe-Online\Store-Shoe-Online\Store-Shoe-Online\obj\Release\net6.0\PubTmp\Out\Microsoft.AspNetCore.Cryptography.Internal.dll
@@ -53,6 +56,7 @@ D:\Store-Shoe-Online\Store-Shoe-Online\Store-Shoe-Online\obj\Release\net6.0\PubT
 D:\Store-Shoe-Online\Store-Shoe-Online\Store-Shoe-Online\obj\Release\net6.0\PubTmp\Out\Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
 D:\Store-Shoe-Online\Store-Shoe-Online\Store-Shoe-Online\obj\Release\net6.0\PubTmp\Out\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
 D:\Store-Shoe-Online\Store-Shoe-Online\Store-Shoe-Online\obj\Release\net6.0\PubTmp\Out\Microsoft.Win32.SystemEvents.dll
+D:\Store-Shoe-Online\Store-Shoe-Online\Store-Shoe-Online\obj\Release\net6.0\PubTmp\Out\MimeKit.dll
 D:\Store-Shoe-Online\Store-Shoe-Online\Store-Shoe-Online\obj\Release\net6.0\PubTmp\Out\Newtonsoft.Json.dll
 D:\Store-Shoe-Online\Store-Shoe-Online\Store-Shoe-Online\obj\Release\net6.0\PubTmp\Out\NuGet.Common.dll
 D:\Store-Shoe-Online\Store-Shoe-Online\Store-Shoe-Online\obj\Release\net6.0\PubTmp\Out\NuGet.Configuration.dll
@@ -71,12 +75,16 @@ D:\Store-Shoe-Online\Store-Shoe-Online\Store-Shoe-Online\obj\Release\net6.0\PubT
 D:\Store-Shoe-Online\Store-Shoe-Online\Store-Shoe-Online\obj\Release\net6.0\PubTmp\Out\System.Configuration.ConfigurationManager.dll
 D:\Store-Shoe-Online\Store-Shoe-Online\Store-Shoe-Online\obj\Release\net6.0\PubTmp\Out\System.Diagnostics.DiagnosticSource.dll
 D:\Store-Shoe-Online\Store-Shoe-Online\Store-Shoe-Online\obj\Release\net6.0\PubTmp\Out\System.Drawing.Common.dll
+D:\Store-Shoe-Online\Store-Shoe-Online\Store-Shoe-Online\obj\Release\net6.0\PubTmp\Out\System.Formats.Asn1.dll
 D:\Store-Shoe-Online\Store-Shoe-Online\Store-Shoe-Online\obj\Release\net6.0\PubTmp\Out\System.IdentityModel.Tokens.Jwt.dll
 D:\Store-Shoe-Online\Store-Shoe-Online\Store-Shoe-Online\obj\Release\net6.0\PubTmp\Out\System.Reflection.MetadataLoadContext.dll
 D:\Store-Shoe-Online\Store-Shoe-Online\Store-Shoe-Online\obj\Release\net6.0\PubTmp\Out\System.Runtime.Caching.dll
+D:\Store-Shoe-Online\Store-Shoe-Online\Store-Shoe-Online\obj\Release\net6.0\PubTmp\Out\System.Security.Cryptography.Pkcs.dll
 D:\Store-Shoe-Online\Store-Shoe-Online\Store-Shoe-Online\obj\Release\net6.0\PubTmp\Out\System.Security.Cryptography.ProtectedData.dll
 D:\Store-Shoe-Online\Store-Shoe-Online\Store-Shoe-Online\obj\Release\net6.0\PubTmp\Out\System.Security.Permissions.dll
+D:\Store-Shoe-Online\Store-Shoe-Online\Store-Shoe-Online\obj\Release\net6.0\PubTmp\Out\System.Text.Encoding.CodePages.dll
 D:\Store-Shoe-Online\Store-Shoe-Online\Store-Shoe-Online\obj\Release\net6.0\PubTmp\Out\System.Windows.Extensions.dll
+D:\Store-Shoe-Online\Store-Shoe-Online\Store-Shoe-Online\obj\Release\net6.0\PubTmp\Out\X.PagedList.dll
 D:\Store-Shoe-Online\Store-Shoe-Online\Store-Shoe-Online\obj\Release\net6.0\PubTmp\Out\af\Humanizer.resources.dll
 D:\Store-Shoe-Online\Store-Shoe-Online\Store-Shoe-Online\obj\Release\net6.0\PubTmp\Out\ar\Humanizer.resources.dll
 D:\Store-Shoe-Online\Store-Shoe-Online\Store-Shoe-Online\obj\Release\net6.0\PubTmp\Out\az\Humanizer.resources.dll
@@ -226,6 +234,8 @@ D:\Store-Shoe-Online\Store-Shoe-Online\Store-Shoe-Online\obj\Release\net6.0\PubT
 D:\Store-Shoe-Online\Store-Shoe-Online\Store-Shoe-Online\obj\Release\net6.0\PubTmp\Out\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
 D:\Store-Shoe-Online\Store-Shoe-Online\Store-Shoe-Online\obj\Release\net6.0\PubTmp\Out\runtimes\win\lib\net6.0\System.Drawing.Common.dll
 D:\Store-Shoe-Online\Store-Shoe-Online\Store-Shoe-Online\obj\Release\net6.0\PubTmp\Out\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+D:\Store-Shoe-Online\Store-Shoe-Online\Store-Shoe-Online\obj\Release\net6.0\PubTmp\Out\runtimes\win\lib\net6.0\System.Security.Cryptography.Pkcs.dll
 D:\Store-Shoe-Online\Store-Shoe-Online\Store-Shoe-Online\obj\Release\net6.0\PubTmp\Out\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
+D:\Store-Shoe-Online\Store-Shoe-Online\Store-Shoe-Online\obj\Release\net6.0\PubTmp\Out\runtimes\win\lib\net6.0\System.Text.Encoding.CodePages.dll
 D:\Store-Shoe-Online\Store-Shoe-Online\Store-Shoe-Online\obj\Release\net6.0\PubTmp\Out\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 D:\Store-Shoe-Online\Store-Shoe-Online\Store-Shoe-Online\obj\Release\net6.0\PubTmp\Out\Store-Shoe-Online.deps.json

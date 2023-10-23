@@ -18,10 +18,9 @@ class HomeProductView extends StatelessWidget {
         children: [
           Header("Home"),
           Container(
-            height: 185,
             padding: const EdgeInsets.only(top: 5),
             child: FittedBox(
-              fit: BoxFit.fill,
+              fit: BoxFit.fitWidth,
               child: Image.asset(header_home),
             ),
           ),
@@ -68,14 +67,19 @@ class HomeProductView extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
+                alignment: Alignment.center,
                 decoration: BoxDecoration(
                     color: Colors.black,
                     borderRadius: BorderRadius.circular(10)),
+                padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: TextButton(
                     onPressed: () {},
                     child: const Text(
                       "Buy Now",
-                      style: TextStyle(fontSize: 25, color: Colors.white),
+                      style: TextStyle(
+                          fontSize: 25,
+                          color: Colors.white,
+                          fontFamily: 'Inter'),
                     )),
               ),
             ],
@@ -85,7 +89,7 @@ class HomeProductView extends StatelessWidget {
             alignment: Alignment.center,
             child: const CategoriesWidget(),
           ),
-          ItemsWidger()
+          // ProductCard()
         ],
       ),
     );

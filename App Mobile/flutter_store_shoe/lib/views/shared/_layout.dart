@@ -3,7 +3,7 @@ import 'package:flutter_store_shoe/views/product/home.view.dart';
 import 'package:flutter_store_shoe/views/product/product_detail.dart';
 
 class MainLayout extends StatefulWidget {
-  const MainLayout({super.key});
+  const MainLayout({Key? key}) : super(key: key);
   @override
   State<MainLayout> createState() => _MainLayout();
 }

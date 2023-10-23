@@ -9,6 +9,9 @@ namespace Store_Shoe_Online.Repository.UnitOfWork
         private IUserRepository _userRepository;
         private IRoleRepository _roleRepository;
         private IConfirmEmailRespository _confirmEmailRespository;
+        private IProductDetailRepository _productDetailRepository;
+        private IProductRepository _productRepository;
+        private ICategoryRepository _categoryRepository;
 #pragma warning disable CS8618
         public UnitOfWork(ApplicationDbContext context)
 #pragma warning restore CS8618
@@ -37,6 +40,30 @@ namespace Store_Shoe_Online.Repository.UnitOfWork
             get
             {
                 return _confirmEmailRespository ??= new ConfirmEmailRespository(_context);
+            }
+        }
+
+        public IProductRepository ProductRepository
+        {
+            get
+            {
+                return _productRepository ??= new ProductRepository(_context);
+            }
+        }
+
+        public IProductDetailRepository ProductDetailRepository
+        {
+            get
+            {
+                return _productDetailRepository ??= new ProductDetailRepository(_context);
+            }
+        }
+
+        public ICategoryRepository CategoryRepository
+        {
+            get
+            {
+                return _categoryRepository??= new CategoryRepository(_context);
             }
         }
         public void Commit()

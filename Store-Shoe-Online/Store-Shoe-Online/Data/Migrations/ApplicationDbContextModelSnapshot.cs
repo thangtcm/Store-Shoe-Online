@@ -51,7 +51,7 @@ namespace Store_Shoe_Online.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "4a13a59c-7a67-4b6a-ad45-111837802076",
+                            Id = "5cef2882-97ce-465e-8b04-3ec283af002a",
                             Name = "Administrator",
                             NormalizedName = "Administrator"
                         });
@@ -149,7 +149,7 @@ namespace Store_Shoe_Online.Data.Migrations
                         new
                         {
                             UserId = "8722be98-3f9d-49a6-b9d6-325c45b22947",
-                            RoleId = "4a13a59c-7a67-4b6a-ad45-111837802076"
+                            RoleId = "5cef2882-97ce-465e-8b04-3ec283af002a"
                         });
                 });
 
@@ -277,6 +277,7 @@ namespace Store_Shoe_Online.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CategoryName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -310,7 +311,12 @@ namespace Store_Shoe_Online.Data.Migrations
                     b.Property<double>("TotalPrice")
                         .HasColumnType("float");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Order");
                 });
@@ -332,7 +338,13 @@ namespace Store_Shoe_Online.Data.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
-                    b.Property<int>("ProductId")
+                    b.Property<int>("ProductDetailId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Size")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -352,9 +364,6 @@ namespace Store_Shoe_Online.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("Amount")
-                        .HasColumnType("int");
-
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
@@ -364,14 +373,44 @@ namespace Store_Shoe_Online.Data.Migrations
                     b.Property<string>("ProductName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("ProductPrice")
-                        .HasColumnType("float");
-
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Product");
+                });
+
+            modelBuilder.Entity("Store_Shoe_Online.Models.ProductDetail", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("Amount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CodeColor")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UrlImage")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("ProductDetails");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -425,6 +464,15 @@ namespace Store_Shoe_Online.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Store_Shoe_Online.Models.Order", b =>
+                {
+                    b.HasOne("Store_Shoe_Online.Data.ApplicationUser", "applicationUser")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("applicationUser");
+                });
+
             modelBuilder.Entity("Store_Shoe_Online.Models.OrderDetail", b =>
                 {
                     b.HasOne("Store_Shoe_Online.Models.Order", "Order")
@@ -433,15 +481,13 @@ namespace Store_Shoe_Online.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Store_Shoe_Online.Models.Product", "Product")
+                    b.HasOne("Store_Shoe_Online.Models.ProductDetail", "ProductDetail")
                         .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ProductId");
 
                     b.Navigation("Order");
 
-                    b.Navigation("Product");
+                    b.Navigation("ProductDetail");
                 });
 
             modelBuilder.Entity("Store_Shoe_Online.Models.Product", b =>
@@ -455,9 +501,25 @@ namespace Store_Shoe_Online.Data.Migrations
                     b.Navigation("Category");
                 });
 
+            modelBuilder.Entity("Store_Shoe_Online.Models.ProductDetail", b =>
+                {
+                    b.HasOne("Store_Shoe_Online.Models.Product", "Product")
+                        .WithMany("Details")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("Store_Shoe_Online.Models.Category", b =>
                 {
                     b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("Store_Shoe_Online.Models.Product", b =>
+                {
+                    b.Navigation("Details");
                 });
 #pragma warning restore 612, 618
         }

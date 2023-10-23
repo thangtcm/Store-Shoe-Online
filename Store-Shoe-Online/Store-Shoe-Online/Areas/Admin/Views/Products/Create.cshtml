@@ -1,0 +1,95 @@
+﻿@model Store_Shoe_Online.Models.Product
+
+@{
+    ViewData["Title"] = "Tạo Sản Phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<section id="multiple-column-form">
+    <div class="row match-height">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Multiple Column</h4>
+                </div>
+                <div class="card-content">
+                    <div class="card-body">
+                        <form class="form" id="form" data-parsley-validate asp-action="Create" enctype="multipart/form-data">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <input type="hidden" asp-for="Id" />
+                            <div class="row">
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group mandatory">
+                                        <label asp-for="ProductName" class="form-label"></label>
+                                        <input asp-for="ProductName" class="form-control" />
+                                        <span asp-validation-for="ProductName" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label asp-for="ProdductDescription" class="form-label"></label>
+                                        <input asp-for="ProdductDescription" class="form-control" />
+                                        <span asp-validation-for="ProdductDescription" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label asp-for="Category" class="form-label"></label>
+                                        <select asp-for="Category" class="choices form-select" asp-items="@ViewBag.CategoryId">
+                                            <option value="0">Chọn Danh Mục</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="productDetailContainer" data-detail-index="1">
+                                @foreach (var detail in Model.Details!)
+                                {
+                                    await Html.RenderPartialAsync("_ProductDetail", detail);
+                                }
+@*                                    <partial name="_ProductDetail.cshtml" model="@detail"/>*@
+                            </div>
+                            <div class="row">
+                                <input class="btn btn-primary" type="button" id="btnAdd" value="Thêm Chi Tiết Sản Phẩm"/>
+                            </div>
+                            <div class="row mt-4">
+                                <div class="col-12 d-flex justify-content-end">
+                                    <button type="submit" class="btn btn-primary me-1 mb-1">
+                                        Submit
+                                    </button>
+                                    <button type="reset"
+                                            class="btn btn-light-secondary me-1 mb-1">
+                                        Reset
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script type="text/javascript">
+        var detailIndex = $('#productDetailContainer').data('detail-index');
+        $(document).ready(function () {
+            $("#btnAdd").on("click", function () {
+                $.ajax({
+                    type: "GET",
+                    url: '/admin/Products/AddProductDetail',
+                    success: function (partialview) {
+                        var newDetail = $(partialview);
+                        newDetail.find('[name]').each(function () {
+                            var name = $(this).attr('name').replace('[0]', '[' + detailIndex + ']');
+                            $(this).attr('name', name);
+                        });
+                        $('#productDetailContainer').append(newDetail);
+                        detailIndex++;
+                        $('#productDetailContainer').data('detail-index', detailIndex);
+                    }
+                });
+            });
+        });
+    </script>
+}

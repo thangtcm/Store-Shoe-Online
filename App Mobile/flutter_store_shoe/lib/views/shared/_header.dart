@@ -24,10 +24,17 @@ class Header extends StatelessWidget {
         badges.Badge(
           showBadge: true,
           ignorePointer: false,
-          badgeContent: Text("${total}"),
+          badgeContent: Text(
+            "${total}",
+            style: const TextStyle(color: Colors.white),
+          ),
+          badgeStyle: const badges.BadgeStyle(
+            badgeColor: Colors.blue,
+          ),
           child: const Icon(
-            Icons.shopping_bag_outlined,
+            Icons.shopping_cart_outlined,
             size: 25,
+            color: Colors.blue,
           ),
           badgeAnimation: const badges.BadgeAnimation.scale(
             animationDuration: Duration(seconds: 1),

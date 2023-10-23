@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>@ViewData["Title"] - Store Shoe Online</title>
+    @{
+        await Html.RenderPartialAsync("_Meta");
+        await Html.RenderPartialAsync("_Style");
+    }
+</head>
+<body>
+    <div id="app">
+        @{
+            await Html.RenderPartialAsync("_Sidebar");
+        }
+        <div id="main">
+            @{
+                await Html.RenderPartialAsync("_Header");
+            }
+            @RenderBody()
+            @{
+                await Html.RenderPartialAsync("_Footer");
+            }
+        </div>
+    </div>
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

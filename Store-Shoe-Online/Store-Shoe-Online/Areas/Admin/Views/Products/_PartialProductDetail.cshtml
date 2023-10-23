@@ -1,0 +1,6 @@
+﻿@model List<Store_Shoe_Online.Models.ProductDetail>
+
+@foreach (var detail in Model)
+{
+    await Html.RenderPartialAsync("_ProductDetail", detail);
+}

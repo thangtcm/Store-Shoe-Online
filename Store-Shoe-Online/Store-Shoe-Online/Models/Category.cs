@@ -8,7 +8,6 @@ namespace Store_Shoe_Online.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-
         [Required]
         public string? CategoryName { get; set; }
         public string? CategoryDescription { get; set; }

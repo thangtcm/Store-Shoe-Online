@@ -256,3 +256,14 @@ D:\Store-Shoe-Online\Store-Shoe-Online\Store-Shoe-Online\obj\Release\net6.0\refi
 D:\Store-Shoe-Online\Store-Shoe-Online\Store-Shoe-Online\obj\Release\net6.0\Store-Shoe-Online.pdb
 D:\Store-Shoe-Online\Store-Shoe-Online\Store-Shoe-Online\obj\Release\net6.0\Store-Shoe-Online.genruntimeconfig.cache
 D:\Store-Shoe-Online\Store-Shoe-Online\Store-Shoe-Online\obj\Release\net6.0\ref\Store-Shoe-Online.dll
+D:\Store-Shoe-Online\Store-Shoe-Online\Store-Shoe-Online\bin\Release\net6.0\BouncyCastle.Cryptography.dll
+D:\Store-Shoe-Online\Store-Shoe-Online\Store-Shoe-Online\bin\Release\net6.0\JetBrains.Annotations.dll
+D:\Store-Shoe-Online\Store-Shoe-Online\Store-Shoe-Online\bin\Release\net6.0\MailKit.dll
+D:\Store-Shoe-Online\Store-Shoe-Online\Store-Shoe-Online\bin\Release\net6.0\MimeKit.dll
+D:\Store-Shoe-Online\Store-Shoe-Online\Store-Shoe-Online\bin\Release\net6.0\System.Formats.Asn1.dll
+D:\Store-Shoe-Online\Store-Shoe-Online\Store-Shoe-Online\bin\Release\net6.0\System.Security.Cryptography.Pkcs.dll
+D:\Store-Shoe-Online\Store-Shoe-Online\Store-Shoe-Online\bin\Release\net6.0\System.Text.Encoding.CodePages.dll
+D:\Store-Shoe-Online\Store-Shoe-Online\Store-Shoe-Online\bin\Release\net6.0\X.PagedList.dll
+D:\Store-Shoe-Online\Store-Shoe-Online\Store-Shoe-Online\bin\Release\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.Pkcs.dll
+D:\Store-Shoe-Online\Store-Shoe-Online\Store-Shoe-Online\bin\Release\net6.0\runtimes\win\lib\net6.0\System.Text.Encoding.CodePages.dll
+D:\Store-Shoe-Online\Store-Shoe-Online\Store-Shoe-Online\obj\Release\net6.0\scopedcss\Areas\Admin\Views\Shared\_LayoutAdmin.cshtml.rz.scp.css

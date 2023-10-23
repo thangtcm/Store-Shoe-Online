@@ -4,7 +4,6 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_store_shoe/models/UserInfoVM.dart';
 import 'package:flutter_store_shoe/services/ApiService.dart';
-import 'package:flutter_store_shoe/views/product/home.view.dart';
 import 'package:flutter_store_shoe/views/shared/_layout.dart';
 import 'package:get/get.dart';
 

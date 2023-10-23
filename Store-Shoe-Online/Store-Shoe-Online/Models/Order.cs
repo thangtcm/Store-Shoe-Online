@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Store_Shoe_Online.Data;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Store_Shoe_Online.Models
@@ -16,6 +18,8 @@ namespace Store_Shoe_Online.Models
         public string? Email { get; set;}
         public double TotalPrice { get; set; }
         public DateTime DateOrder { get; set; }
-
+        public string? UserId { get; set; }
+        [ForeignKey("UserId")]
+        public ApplicationUser? applicationUser { get; set; }
     }
 }
