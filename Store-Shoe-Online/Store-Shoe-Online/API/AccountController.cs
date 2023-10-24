@@ -130,7 +130,6 @@ namespace Store_Shoe_Online.API
             return StatusCode(StatusCodes.Status404NotFound, ResponseResult.CreateResponse("Error Server", "Lấy danh sách tài khoản không thành công."));
         }
 
-        [EnableCors("luyentoan.vn")]
         [HttpPost("Register")]
         public async Task<IActionResult> Register(UserInfoVM model)
         {

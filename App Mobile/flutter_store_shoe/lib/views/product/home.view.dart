@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_store_shoe/utils/const.dart';
 import 'package:flutter_store_shoe/views/shared/_header.dart';
 import 'package:flutter_store_shoe/views/widget/categories.dart';
-import 'package:flutter_store_shoe/views/widget/items.dart';
 
 class HomeProductView extends StatelessWidget {
   HomeProductView({Key? key}) : super(key: key);
@@ -20,7 +19,7 @@ class HomeProductView extends StatelessWidget {
           Container(
             padding: const EdgeInsets.only(top: 5),
             child: Image.network(
-              'https://thangepedoan-001-site1.ftempurl.com/Image/075f84905c88bfebaa42b036dc8ae708.gif',
+              HomeGif,
               width: double.infinity,
               fit: BoxFit.contain,
             ),

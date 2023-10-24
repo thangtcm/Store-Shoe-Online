@@ -6,3 +6,4 @@ export 'package:dio/dio.dart';
 export 'dart:convert';
 export './sizes.dart';
 export './apiurl.dart';
+export './urlPath.dart';

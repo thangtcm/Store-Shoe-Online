@@ -1,11 +1,18 @@
 // ignore_for_file: use_build_context_synchronously, unnecessary_overrides, non_constant_identifier_names
 
-import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_store_shoe/enum/typeNotify.dart';
 import 'package:flutter_store_shoe/models/UserInfoVM.dart';
 import 'package:flutter_store_shoe/services/ApiService.dart';
+import 'package:flutter_store_shoe/services/showNotifiDialog.dart';
+import 'package:flutter_store_shoe/services/userPreferences.dart';
+import 'package:flutter_store_shoe/views/account/confirmEmail.dart';
+import 'package:flutter_store_shoe/views/account/login.view.dart';
+import 'package:flutter_store_shoe/views/account/register.view.dart';
 import 'package:flutter_store_shoe/views/shared/_layout.dart';
 import 'package:get/get.dart';
+
+import '../models/ConfirmEmailInfo.dart';
 
 class AccountController extends GetxController {
   var isloading = true.obs;
@@ -41,20 +48,8 @@ class AccountController extends GetxController {
       isloading(true);
       if (password != confirmPassword) {
         isloading(false);
-        AwesomeDialog(
-          context: context,
-          animType: AnimType.scale,
-          dialogType: DialogType.error,
-          body: const Center(
-            child: Text(
-              'Lỗi : Mật khẩu không khớp nhau',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            ),
-          ),
-          title: 'Đăng ký thất bại',
-          desc: 'This is also Ignored',
-          btnOkOnPress: () {},
-        ).show();
+        await ShowDialogNotify.showNotify(
+            "Đăng ký thất bại", 'Mật khẩu không khớp nhau', context);
         return;
       } else {
         UserInfoVM user = UserInfoVM(
@@ -63,25 +58,70 @@ class AccountController extends GetxController {
             numberPhone: numberPhone,
             password: password,
             userName: userName);
-        var response = await ApiService.SendEmail(user);
+        var response = await ApiService.sendEmail(user);
         if (response.statusCode == 200) {
+          var getUser = await UserPreferences().getUserModel();
+          if (getUser != null) {
+            await UserPreferences().clearUserModel();
+          }
+          await UserPreferences().saveUserModel(user);
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => const ConfirmEmailView()));
         } else {
-          AwesomeDialog(
-            context: context,
-            animType: AnimType.scale,
-            dialogType: DialogType.error,
-            body: Center(
-              child: Text(
-                'Lỗi : ${response.description}',
-                style:
-                    const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-              ),
-            ),
-            title: 'Đăng ký không thành công',
-            desc: 'This is also Ignored',
-            btnOkOnPress: () {},
-          ).show();
+          await ShowDialogNotify.showNotify(
+              "Đăng ký không thành công", response.description, context);
         }
+      }
+    } finally {
+      isloading(false);
+    }
+  }
+
+  Future ConfirmEmail(int TextCode, BuildContext context) async {
+    try {
+      isloading(true);
+      var user = await UserPreferences().getUserModel();
+      if (user == null) {
+        await ShowDialogNotify.showNotify(
+            "Lỗi từ máy chủ",
+            "Đã có lỗi xảy ra trong quá trình xác thực, vui lòng đăng ký lại.",
+            context);
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(
+            builder: (context) => const RegisterView(),
+          ),
+        );
+        return;
+      }
+      ConfirmEmailVM model = ConfirmEmailVM();
+      model.Email = user.email;
+      model.Code = TextCode;
+
+      var reponse = await ApiService.confirmEmail(model);
+      if (reponse.statusCode == 200) {
+        print("Chay");
+        reponse = await ApiService.register(user);
+
+        if (reponse.statusCode == 200) {
+          await ShowDialogNotify.showNotify(
+              "Xác thực thành công",
+              'Tài khoản bạn đã được xác thực, và hệ thống đã tạo xong tài khoản của bạn.',
+              context,
+              typenotify: typeNotify.Success);
+          Navigator.of(context).pushReplacement(
+            MaterialPageRoute(
+              builder: (context) => const LoginView(),
+            ),
+          );
+        } else {
+          await ShowDialogNotify.showNotify(
+              "Xác thực thất bại", reponse.description, context);
+        }
+      } else {
+        await ShowDialogNotify.showNotify(
+            "Xác thực thất bại", reponse.description, context);
       }
     } finally {
       isloading(false);
@@ -103,20 +143,8 @@ class AccountController extends GetxController {
       } else {
         // Navigator.pop(context);
         // Xử lý lỗi ở đây
-        AwesomeDialog(
-          context: context,
-          animType: AnimType.scale,
-          dialogType: DialogType.error,
-          body: Center(
-            child: Text(
-              'Lỗi : ${response.description}',
-              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            ),
-          ),
-          title: 'Đăng nhập không thành công',
-          desc: 'This is also Ignored',
-          btnOkOnPress: () {},
-        ).show();
+        ShowDialogNotify.showNotify(
+            "Đăng nhập không thành công", response.description, context);
       }
     } finally {
       isloading(false);

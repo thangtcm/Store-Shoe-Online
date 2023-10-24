@@ -7,6 +7,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_store_shoe/models/ApiDefault.dart';
 import 'package:flutter_store_shoe/models/ApiResponse.dart';
 import 'package:flutter_store_shoe/models/CategoryVM.dart';
+import 'package:flutter_store_shoe/models/ConfirmEmailInfo.dart';
 import 'package:flutter_store_shoe/models/ProductInfoVM.dart';
 import 'package:flutter_store_shoe/models/UserInfoVM.dart';
 import 'package:flutter_store_shoe/utils/apiurl.dart';
@@ -49,29 +50,97 @@ class ApiService {
     }
   }
 
-  static Future<ApiResponse<Object>> SendEmail(UserInfoVM user) async {
+  static Future<ApiResponse<ApiDefault>> register(UserInfoVM user) async {
+    print("Dữ liệu là ---${user.toJson()}");
     try {
-      print('Test ${user.toJson}');
+      final response = await _dio.post(
+        apiRegister,
+        options: Options(headers: {
+          HttpHeaders.contentTypeHeader: 'application/json',
+        }),
+        data: user.toJson(),
+      );
+
+      if (response.statusCode == 200) {
+        ApiResponse<ApiDefault> responseData = ApiResponse.fromJson(
+            response.data,
+            (json) => ApiDefault.fromJson(json),
+            response.statusCode);
+        return responseData;
+      } else {
+        final errorResponse = ApiResponse.fromJson(response.data,
+            (json) => ApiDefault.fromJson(json), response.statusCode);
+        return errorResponse;
+      }
+    } catch (error) {
+      print('Lỗi $error');
+      return ApiResponse<ApiDefault>(
+        code: 'Error',
+        description: 'Lỗi không xác định',
+        data: null,
+        statusCode: 404,
+      );
+    }
+  }
+
+  static Future<ApiResponse<ApiDefault>> confirmEmail(
+      ConfirmEmailVM model) async {
+    try {
+      final response = await _dio.post(
+        apiConfirmEmail,
+        options: Options(headers: {
+          HttpHeaders.contentTypeHeader: 'application/json',
+        }),
+        data: model
+            .toJson(), // Sử dụng phương thức toJson() của model để chuyển đổi thành JSON
+      );
+      print('Dữ liệu được: ${response.data}');
+      if (response.statusCode == 200) {
+        ApiResponse<ApiDefault> responseData = ApiResponse.fromJson(
+            response.data,
+            (json) => ApiDefault.fromJson(json),
+            response.statusCode);
+        return responseData;
+      } else {
+        final errorResponse = ApiResponse.fromJson(response.data,
+            (json) => ApiDefault.fromJson(json), response.statusCode);
+        return errorResponse;
+      }
+    } catch (error) {
+      print('Lỗi $error');
+      return ApiResponse<ApiDefault>(
+        code: 'Error',
+        description: 'Lỗi không xác định',
+        data: null,
+        statusCode: 404,
+      );
+    }
+  }
+
+  static Future<ApiResponse<ApiDefault>> sendEmail(UserInfoVM user) async {
+    try {
       final response = await _dio.post(
         apiSendMail,
         options: Options(headers: {
           HttpHeaders.contentTypeHeader: 'application/json',
         }),
-        data: jsonEncode(user.toJson),
+        data: user
+            .toJson(), // Sử dụng phương thức toJson() của model để chuyển đổi thành JSON
       );
 
       if (response.statusCode == 200) {
-        ApiResponse<UserInfoVM> responseData = ApiResponse.fromJson(
+        ApiResponse<ApiDefault> responseData = ApiResponse.fromJson(
             response.data,
-            (json) => UserInfoVM.fromJson(json),
+            (json) => ApiDefault.fromJson(json),
             response.statusCode);
         return responseData;
       } else {
         final errorResponse = ApiResponse.fromJson(response.data,
-            (json) => UserInfoVM.fromJson(json), response.statusCode);
+            (json) => ApiDefault.fromJson(json), response.statusCode);
         return errorResponse;
       }
     } catch (error) {
+      print('Lỗi $error');
       return ApiResponse<ApiDefault>(
         code: 'Error',
         description: 'Lỗi không xác định',

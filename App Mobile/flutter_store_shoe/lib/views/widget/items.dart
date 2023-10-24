@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_store_shoe/models/ProductInfoVM.dart';
-import 'package:flutter_store_shoe/utils/images.dart';
 
 typedef ProductCardOnTaped = void Function(Product data);
 

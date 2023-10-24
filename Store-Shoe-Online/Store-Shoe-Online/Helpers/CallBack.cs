@@ -74,12 +74,12 @@ namespace Store_Shoe_Online.Helpers
                 $"</div>\r\n" +
                     $"<p style=\"font-size:1.1em\">Hi, <span style=\"font-weight: 700;\">{FullName}</span></p>\r\n" +
                     $"<p>Chúng tôi đã nhận được yêu cầu xác nhận tài khoản của <strong>Admin</strong> thông qua email <span style=\"color:rgb(90, 90, 2465)\">{Email}</span> được gửi tại\r\n" +
-                    $"<a href=\"https://thangepedoan-001-site1.ftempurl.com/\" style=\"color:rgb(90, 90, 246)\">Luyentoan.online</a>.\r\n" +
+                    $"<a href=\"https://thangepedoan-001-site1.ftempurl.com/\" style=\"color:rgb(90, 90, 246)\">nike.vn</a>.\r\n" +
                     $"Mã xác nhận của bạn là:\r\n" +
                     $"</p>\r\n" +
                     $"<h2 style=\"background: #00466a;margin: 0 auto;width: max-content;padding: 0 10px;color: #fff;border-radius: 4px;\">{code}</h2>\r\n" +
                     $"<p>Nếu bạn không nhận được bất kỳ phản hồi nào thì có thể người khác đang cố gắng truy cập vào tài khoản của bạn. Vui lòng không chuyển tiếp hoặc đưa mã này cho bất kỳ ai.</p>\r\n" +
-                    $"<p style=\"font-size:0.9em;\">Trân trọng,<br /><strong>Admin <a href=\"https://thangepedoan-001-site1.ftempurl.com/\" style=\"color:rgb(90, 90, 246)\">Luyentoan.online</a></strong></p>\r\n" +
+                    $"<p style=\"font-size:0.9em;\">Trân trọng,<br /><strong>Admin <a href=\"https://thangepedoan-001-site1.ftempurl.com/\" style=\"color:rgb(90, 90, 246)\">nike.vn</a></strong></p>\r\n" +
                     $"<hr style=\"border:none;border-top:1px solid #eee\" />\r\n" +
                     $"<div style=\"display: flex;justify-content: space-between; padding:8px 0;color:#aaa;font-size:0.8em;line-height:1;font-weight:300\">\r\n" +
                     $"<p>Cửa hàng bán giày online</p>\r\n" +

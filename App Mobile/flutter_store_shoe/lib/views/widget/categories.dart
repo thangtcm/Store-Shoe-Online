@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_store_shoe/controller/category.dart';
-import 'package:flutter_store_shoe/models/CategoryVM.dart';
 import 'package:get/get.dart';
 
 class CategoriesWidget extends StatefulWidget {

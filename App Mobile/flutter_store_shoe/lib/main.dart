@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:flutter_store_shoe/views/account/confirmEmail.dart';
 import 'package:flutter_store_shoe/views/account/login.view.dart';
 import 'package:flutter_store_shoe/views/product/home.view.dart';
 import 'package:flutter_store_shoe/views/shared/_layout.dart';
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const LoginView(),
+      home: const SplashView(),
       builder: EasyLoading.init(),
     );
   }
