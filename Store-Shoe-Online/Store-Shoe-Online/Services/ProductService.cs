@@ -1,10 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query;
 using Store_Shoe_Online.Models;
 using Store_Shoe_Online.Repository.UnitOfWork;
 using Store_Shoe_Online.Services.Interface;
 using System.Net.WebSockets;
+using System.Security.Cryptography;
 
 namespace Store_Shoe_Online.Services
 {
@@ -19,7 +21,7 @@ namespace Store_Shoe_Online.Services
         }
         public async Task Add(Product data)
         {
-            List<ProductDetail> lst = new ();
+            List<ProductDetail> lst = new();
             _unitOfWork.ProductRepository.Add(data);
             foreach (var model in data.Details!)
             {
@@ -38,7 +40,6 @@ namespace Store_Shoe_Online.Services
                     }
 
                 }
-                Console.WriteLine($"RUNNNN {model.Price} \n\n\n");
                 model.Product = data;
                 lst.Add(model);
             }
@@ -50,7 +51,7 @@ namespace Store_Shoe_Online.Services
         {
             _unitOfWork.ProductRepository.AddRange(data);
             await _unitOfWork.CommitAsync();
-        }    
+        }
         public Product? Get(int id)
             => _unitOfWork.ProductRepository.Get(x => x.Id == id);
 
@@ -58,16 +59,78 @@ namespace Store_Shoe_Online.Services
             => await _unitOfWork.ProductRepository.GetAsync(x => x.Id == id);
 
         public async Task<Product?> GetByIdAsync(int id, Func<IQueryable<Product>, IIncludableQueryable<Product, object>> includes)
-            => await _unitOfWork.ProductRepository.GetAsync(x => x.Id == id, null);
+        {
+            var product = await _unitOfWork.ProductRepository.GetAsync(x => x.Id == id, null);
+            if (product != null)
+            {
+                var rating = await _unitOfWork.RatingProductRepository.GetAllAsync(x => x.ProductId == product.Id);
+                var ratingScore = rating.Sum(x => x.Rating) / rating.Count;
+                product.Rating = ratingScore;
+                return product;
+            }
+            return null;
+        }
 
         public async Task<ICollection<Product>> GetListAsync()
-            => await _unitOfWork.ProductRepository.GetAllAsync();
+        {
+            var products = await _unitOfWork.ProductRepository.GetAllAsync();
+            if (products.Count > 0)
+            {
+                var productIds = products.Select(p => p.Id).ToList();
+                var ratings = await _unitOfWork.RatingProductRepository.GetAllAsync(x => productIds.Contains(x.ProductId));
+                if (ratings.Count > 0)
+                {
+                    var ratingScores = ratings.GroupBy(r => r.ProductId)
+                        .ToDictionary(group => group.Key, group => group.Average(r => r.Rating));
+
+                    foreach (var product in products)
+                    {
+                        if (ratingScores.ContainsKey(product.Id))
+                        {
+                            product.Rating = ratingScores[product.Id];
+                        }
+                    }
+                }
+
+            }
+            return products;
+        } 
 
         public async Task<ICollection<Product>> GetListAsync(int categoryId, Func<IQueryable<Product>, IIncludableQueryable<Product, object>> includes)
         {
-            if (categoryId == 0)
-                return await _unitOfWork.ProductRepository.GetAllAsync(null, includes);
-            return await _unitOfWork.ProductRepository.GetAllAsync(x => x.CategoryId == categoryId, includes);
+            var products = await _unitOfWork.ProductRepository.GetAllAsync(categoryId == 0 ? null : x => x.CategoryId == categoryId, includes);
+            if (products.Count > 0)
+            {
+                var ratings = await _unitOfWork.RatingProductRepository.GetAllAsync(x => products.Select(p => p.Id).ToList().Contains(x.ProductId));
+                if (ratings.Count > 0)
+                {
+                    var ratingSumByProductId = ratings
+                .GroupBy(r => r.ProductId)
+                .ToDictionary(group => group.Key, group => group.Sum(r => r.Rating));
+
+                    var ratingCountByProductId = ratings
+                        .GroupBy(r => r.ProductId)
+                        .ToDictionary(group => group.Key, group => group.Count());
+
+                    foreach (var product in products)
+                    {
+                        if (ratingSumByProductId.ContainsKey(product.Id))
+                        {
+                            var ratingSum = ratingSumByProductId[product.Id];
+                            var ratingCount = ratingCountByProductId[product.Id];
+                            product.Rating = ratingCount > 0 ? (double)ratingSum / ratingCount : 5.0;
+                        }
+                    }
+                }
+                else
+                {
+                    foreach (var product in products)
+                    {
+                        product.Rating = 5.0;
+                    }
+                }
+            }
+            return products;
         }
 
         public async Task Remove(int Id)

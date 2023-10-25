@@ -1,4 +1,4 @@
-// ignore_for_file: library_private_types_in_public_api, use_build_context_synchronously, must_be_immutable, non_constant_identifier_names
+// ignore_for_file: library_private_types_in_public_api, use_build_context_synchronously, must_be_immutable, non_constant_identifier_names, file_names
 
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';

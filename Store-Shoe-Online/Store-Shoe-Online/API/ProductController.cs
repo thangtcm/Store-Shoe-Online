@@ -18,10 +18,14 @@ namespace Store_Shoe_Online.API
     {
         private readonly IProductService _productService;
         private readonly ILogger<ProductController> _logger;
-        public ProductController(IProductService productService, ILogger<ProductController> logger)
+        private readonly IRatingService _ratingService;
+        private readonly IFavoriteProductService _favoriteProductService;
+        public ProductController(IProductService productService, ILogger<ProductController> logger, IRatingService ratingService, IFavoriteProductService favoriteProductService)
         {
             _productService = productService;
             _logger = logger;
+            _ratingService = ratingService;
+            _favoriteProductService = favoriteProductService;
         }
 
         [HttpGet("GetProducts")]
@@ -40,6 +44,7 @@ namespace Store_Shoe_Online.API
                     ProductName = product.ProductName,
                     ProdductDescription = product.ProdductDescription,
                     CategoryId = product.CategoryId,
+                    Rating = product.Rating,
                     Details = product.Details.Select(detail => new ProductDetailDTO
                     {
                         Id = detail.Id,
@@ -78,6 +83,37 @@ namespace Store_Shoe_Online.API
             return StatusCode(StatusCodes.Status404NotFound, ResponseResult.CreateResponse("Error Server", "Đã có lỗi xảy ra từ máy chủ."));
 
         }
+
+        [HttpPost("UpdateRating")]
+        public async Task<IActionResult> UpdateRating(int productId, string? userId, double rate)
+        {
+            try
+            {
+                await _ratingService.Update(productId, userId, rate);
+                return StatusCode(StatusCodes.Status200OK, ResponseResult.CreateResponse("Success", "Update dữ liệu rating product thành công."));
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message.ToString());
+            }
+            return StatusCode(StatusCodes.Status404NotFound, ResponseResult.CreateResponse("Error Server", "Đã có lỗi xảy ra từ máy chủ."));
+        }
+
+        [HttpPost("UpdateFavorite")]
+        public async Task<IActionResult> UpdateFavorite(int productId, string? userId)
+        {
+            try
+            {
+                await _favoriteProductService.Add(productId, userId);
+                return StatusCode(StatusCodes.Status200OK, ResponseResult.CreateResponse("Success", "Update dữ liệu favorite product thành công."));
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message.ToString());
+            }
+            return StatusCode(StatusCodes.Status404NotFound, ResponseResult.CreateResponse("Error Server", "Đã có lỗi xảy ra từ máy chủ."));
+        }
+
 
 
         [HttpPost("AddProduct")]

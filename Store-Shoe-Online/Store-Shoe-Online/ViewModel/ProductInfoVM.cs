@@ -6,6 +6,7 @@
         public string ProductName { get; set; }
         public string ProdductDescription { get; set; }
         public int CategoryId { get; set; }
+        public double Rating { get; set; }
         // Các thuộc tính khác bạn muốn bao gồm
         public List<ProductDetailDTO> Details { get; set; }
     }

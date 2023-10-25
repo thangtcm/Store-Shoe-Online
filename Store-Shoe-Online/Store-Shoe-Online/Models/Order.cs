@@ -20,6 +20,7 @@ namespace Store_Shoe_Online.Models
         public DateTime DateOrder { get; set; }
         public string? UserId { get; set; }
         [ForeignKey("UserId")]
-        public ApplicationUser? applicationUser { get; set; }
+        public ApplicationUser? ApplicationUser { get; set; }
+        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
     }
 }

@@ -11,7 +11,7 @@ class MainLayout extends StatefulWidget {
 class _MainLayout extends State<MainLayout> {
   int myCurrentIndex = 0;
   List pages = [
-    HomeProductView(),
+    const HomeProductView(),
     ProductDetail(),
     ProductDetail(),
     ProductDetail(),

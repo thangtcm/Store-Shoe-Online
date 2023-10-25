@@ -12,6 +12,10 @@ namespace Store_Shoe_Online.Repository.UnitOfWork
         private IProductDetailRepository _productDetailRepository;
         private IProductRepository _productRepository;
         private ICategoryRepository _categoryRepository;
+        private IRatingProductRepository _ratingProductRepository;
+        private IFavoriteProductRepository _favoriteProductRepository;
+        private IOrderRepository _orderRepository;
+        private IOrderDetailRepository _orderDetailRepository;
 #pragma warning disable CS8618
         public UnitOfWork(ApplicationDbContext context)
 #pragma warning restore CS8618
@@ -64,6 +68,38 @@ namespace Store_Shoe_Online.Repository.UnitOfWork
             get
             {
                 return _categoryRepository??= new CategoryRepository(_context);
+            }
+        }
+
+        public IRatingProductRepository RatingProductRepository
+        {
+            get
+            {
+                return _ratingProductRepository??= new RatingProductRepository(_context);
+            }
+        }
+
+        public IFavoriteProductRepository FavoriteProductRepository
+        {
+            get
+            {
+                return _favoriteProductRepository ??= new FavoriteProductRepository(_context);
+            }
+        }
+
+        public IOrderRepository OrderRepository
+        {
+            get
+            {
+                return _orderRepository??= new OrderRepository(_context);
+            }
+        }
+
+        public IOrderDetailRepository OrderDetailRepository
+        {
+            get
+            {
+                return _orderDetailRepository ??= new OrderDetailRepository(_context);
             }
         }
         public void Commit()

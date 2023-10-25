@@ -12,6 +12,8 @@ namespace Store_Shoe_Online.Models
         public int Id { get; set; }
         [DisplayName("Tên sản phẩm")]
         public string? ProductName { get; set; }
+        [NotMapped]
+        public double Rating { get; set; }
         [DisplayName("Mô tả sản phẩm")]
         public string? ProdductDescription { get; set; }
         [JsonIgnore]
@@ -20,6 +22,5 @@ namespace Store_Shoe_Online.Models
         [JsonIgnore]
         public Category? Category { get; set; }
         public virtual ICollection<ProductDetail>? Details { get; set; }
-
     }
 }

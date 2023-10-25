@@ -101,7 +101,6 @@ class AccountController extends GetxController {
 
       var reponse = await ApiService.confirmEmail(model);
       if (reponse.statusCode == 200) {
-        print("Chay");
         reponse = await ApiService.register(user);
 
         if (reponse.statusCode == 200) {

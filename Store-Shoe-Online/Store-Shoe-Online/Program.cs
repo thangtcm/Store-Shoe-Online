@@ -21,6 +21,9 @@ builder.Services.AddTransient(typeof(IRoleService), typeof(RoleService));
 builder.Services.AddTransient(typeof(IConfirmEmailService), typeof(ConfirmEmailService));
 builder.Services.AddTransient(typeof(ICategoryService), typeof(CategoryService));
 builder.Services.AddTransient(typeof(IProductService), typeof(ProductService));
+builder.Services.AddTransient(typeof(IFavoriteProductService), typeof(FavoriteProductService));
+builder.Services.AddTransient(typeof(IRatingService), typeof(RatingService));
+builder.Services.AddTransient(typeof(IOrderService), typeof(OrderService));
 builder.Services.AddScoped<IUserEmailStore<ApplicationUser>, UserStore<ApplicationUser, IdentityRole, ApplicationDbContext, string>>();
 builder.Services.AddScoped<IUserRoleStore<ApplicationUser>, UserStore<ApplicationUser, IdentityRole, ApplicationDbContext, string>>();
 
@@ -61,6 +64,10 @@ builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IConfirmEmailRespository, ConfirmEmailRespository>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IProductDetailRepository, ProductDetailRepository>();
+builder.Services.AddScoped<IFavoriteProductRepository, FavoriteProductRepository>();
+builder.Services.AddScoped<IRatingProductRepository, RatingProductRepository>();
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+builder.Services.AddScoped<IOrderDetailRepository, OrderDetailRepository>();
 
 builder.Services.AddMemoryCache();
 builder.Services.AddDistributedMemoryCache();

@@ -10,6 +10,10 @@ namespace Store_Shoe_Online.Repository.UnitOfWork
         IProductDetailRepository ProductDetailRepository { get; }
         IConfirmEmailRespository ConfirmEmailRespository { get; }
         ICategoryRepository CategoryRepository { get; }
+        IRatingProductRepository RatingProductRepository { get; }
+        IFavoriteProductRepository FavoriteProductRepository { get; }
+        IOrderRepository OrderRepository { get; }
+        IOrderDetailRepository OrderDetailRepository { get; }
         void Commit();
         void Rollback();
         Task CommitAsync();

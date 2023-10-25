@@ -51,7 +51,7 @@ namespace Store_Shoe_Online.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "7abc51e3-18ed-4820-958c-9874b4923021",
+                            Id = "a012be79-ee02-4a49-bdc5-bdebef712797",
                             Name = "Administrator",
                             NormalizedName = "Administrator"
                         });
@@ -149,7 +149,7 @@ namespace Store_Shoe_Online.Data.Migrations
                         new
                         {
                             UserId = "8722be98-3f9d-49a6-b9d6-325c45b22947",
-                            RoleId = "7abc51e3-18ed-4820-958c-9874b4923021"
+                            RoleId = "a012be79-ee02-4a49-bdc5-bdebef712797"
                         });
                 });
 
@@ -307,6 +307,35 @@ namespace Store_Shoe_Online.Data.Migrations
                     b.ToTable("ConfirmEmail");
                 });
 
+            modelBuilder.Entity("Store_Shoe_Online.Models.FavoriteProduct", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("DateCreate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsFavorite")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("FavoriteProduct");
+                });
+
             modelBuilder.Entity("Store_Shoe_Online.Models.Order", b =>
                 {
                     b.Property<int>("Id")
@@ -435,6 +464,35 @@ namespace Store_Shoe_Online.Data.Migrations
                     b.ToTable("ProductDetails");
                 });
 
+            modelBuilder.Entity("Store_Shoe_Online.Models.RatingProduct", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("DateCreate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<double>("Rating")
+                        .HasColumnType("float");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("RatingProduct");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -486,19 +544,36 @@ namespace Store_Shoe_Online.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Store_Shoe_Online.Models.Order", b =>
+            modelBuilder.Entity("Store_Shoe_Online.Models.FavoriteProduct", b =>
                 {
-                    b.HasOne("Store_Shoe_Online.Data.ApplicationUser", "applicationUser")
+                    b.HasOne("Store_Shoe_Online.Models.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Store_Shoe_Online.Data.ApplicationUser", "ApplicationUser")
                         .WithMany()
                         .HasForeignKey("UserId");
 
-                    b.Navigation("applicationUser");
+                    b.Navigation("ApplicationUser");
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("Store_Shoe_Online.Models.Order", b =>
+                {
+                    b.HasOne("Store_Shoe_Online.Data.ApplicationUser", "ApplicationUser")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("ApplicationUser");
                 });
 
             modelBuilder.Entity("Store_Shoe_Online.Models.OrderDetail", b =>
                 {
                     b.HasOne("Store_Shoe_Online.Models.Order", "Order")
-                        .WithMany()
+                        .WithMany("OrderDetails")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -534,9 +609,31 @@ namespace Store_Shoe_Online.Data.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("Store_Shoe_Online.Models.RatingProduct", b =>
+                {
+                    b.HasOne("Store_Shoe_Online.Models.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Store_Shoe_Online.Data.ApplicationUser", "ApplicationUser")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("ApplicationUser");
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("Store_Shoe_Online.Models.Category", b =>
                 {
                     b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("Store_Shoe_Online.Models.Order", b =>
+                {
+                    b.Navigation("OrderDetails");
                 });
 
             modelBuilder.Entity("Store_Shoe_Online.Models.Product", b =>
