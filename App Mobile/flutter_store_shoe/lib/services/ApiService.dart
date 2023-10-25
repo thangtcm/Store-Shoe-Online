@@ -24,11 +24,17 @@ class ApiService {
     try {
       final response = await _dio.post(
         apiLogin,
-        options: Options(headers: {
-          HttpHeaders.contentTypeHeader: 'application/json',
-        }),
+        options: Options(
+            headers: {
+              HttpHeaders.contentTypeHeader: 'application/json',
+            },
+            followRedirects: false,
+            validateStatus: (status) {
+              return status! < 500;
+            }),
         data: jsonEncode(requestData),
       );
+      print('${response.data}');
       if (response.statusCode == 200) {
         ApiResponse<UserInfoVM> responseData = ApiResponse.fromJson(
             response.data,
@@ -41,6 +47,7 @@ class ApiService {
         return errorResponse;
       }
     } catch (error) {
+      print('$error');
       return ApiResponse<UserInfoVM>(
         code: 'Error',
         description: 'Lỗi không xác định',
@@ -51,16 +58,19 @@ class ApiService {
   }
 
   static Future<ApiResponse<ApiDefault>> register(UserInfoVM user) async {
-    print("Dữ liệu là ---${user.toJson()}");
+    final response = await _dio.post(
+      apiRegister,
+      options: Options(
+          headers: {
+            HttpHeaders.contentTypeHeader: 'application/json',
+          },
+          followRedirects: false,
+          validateStatus: (status) {
+            return status! < 500;
+          }),
+      data: user.toJson(),
+    );
     try {
-      final response = await _dio.post(
-        apiRegister,
-        options: Options(headers: {
-          HttpHeaders.contentTypeHeader: 'application/json',
-        }),
-        data: user.toJson(),
-      );
-
       if (response.statusCode == 200) {
         ApiResponse<ApiDefault> responseData = ApiResponse.fromJson(
             response.data,
@@ -73,7 +83,7 @@ class ApiService {
         return errorResponse;
       }
     } catch (error) {
-      print('Lỗi $error');
+      print('Lỗi $error\n${response.data}');
       return ApiResponse<ApiDefault>(
         code: 'Error',
         description: 'Lỗi không xác định',
@@ -88,9 +98,14 @@ class ApiService {
     try {
       final response = await _dio.post(
         apiConfirmEmail,
-        options: Options(headers: {
-          HttpHeaders.contentTypeHeader: 'application/json',
-        }),
+        options: Options(
+            headers: {
+              HttpHeaders.contentTypeHeader: 'application/json',
+            },
+            followRedirects: false,
+            validateStatus: (status) {
+              return status! < 500;
+            }),
         data: model
             .toJson(), // Sử dụng phương thức toJson() của model để chuyển đổi thành JSON
       );
@@ -121,9 +136,14 @@ class ApiService {
     try {
       final response = await _dio.post(
         apiSendMail,
-        options: Options(headers: {
-          HttpHeaders.contentTypeHeader: 'application/json',
-        }),
+        options: Options(
+            headers: {
+              HttpHeaders.contentTypeHeader: 'application/json',
+            },
+            followRedirects: false,
+            validateStatus: (status) {
+              return status! < 500;
+            }),
         data: user
             .toJson(), // Sử dụng phương thức toJson() của model để chuyển đổi thành JSON
       );
@@ -154,12 +174,18 @@ class ApiService {
     try {
       final response = await _dio.get(
         apiGetCategorys,
-        options: Options(headers: {
-          HttpHeaders.contentTypeHeader: 'application/json',
-        }),
+        options: Options(
+            headers: {
+              HttpHeaders.contentTypeHeader: 'application/json',
+            },
+            followRedirects: false,
+            validateStatus: (status) {
+              return status! < 500;
+            }),
       );
       final responseData = ApiResponseList.fromJsonList(response.data,
           (json) => CategoryVM.fromJson(json), response.statusCode);
+
       return responseData;
     } catch (error) {
       return ApiResponseList<CategoryVM>(
@@ -176,9 +202,14 @@ class ApiService {
     try {
       final response = await _dio.get(
         '$apiGetProducts?categoryId=$category&page=$page',
-        options: Options(headers: {
-          HttpHeaders.contentTypeHeader: 'application/json',
-        }),
+        options: Options(
+            headers: {
+              HttpHeaders.contentTypeHeader: 'application/json',
+            },
+            followRedirects: false,
+            validateStatus: (status) {
+              return status! < 500;
+            }),
       );
       if (response.statusCode == 200) {
         final apiResponse = ApiResponseListPage.fromJson(response.data,

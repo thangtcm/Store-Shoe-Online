@@ -86,7 +86,7 @@ class ApiResponseData<T> {
     Map<String, dynamic> json,
     T Function(Map<String, dynamic>) fromJson,
   ) {
-    final List<dynamic> dataList = json['data'] ?? [];
+    final List<dynamic> dataList = json['data'];
     final List<T> items = dataList.map((item) => fromJson(item)).toList();
     return ApiResponseData(
       data: items,

@@ -134,7 +134,10 @@ class AccountController extends GetxController {
       isloading(true);
       var response = await ApiService.login(userName, password);
       if (response.statusCode == 200) {
-        await response.data?.saveToPrefs();
+        var user = response.data;
+        if (user != null) {
+          await UserPreferences().saveUserModel(user);
+        }
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(
             builder: (context) => const MainLayout(),

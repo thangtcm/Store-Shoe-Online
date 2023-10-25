@@ -1,5 +1,7 @@
 // ignore_for_file: file_names
 
+import 'package:flutter_store_shoe/models/RatingModel.dart';
+
 class ProductDetail {
   int id;
   int productId;
@@ -31,21 +33,23 @@ class Product {
   String productName;
   String productDescription;
   List<ProductDetail>? details;
-
-  Product(
-      {required this.id,
-      required this.productName,
-      required this.productDescription,
-      this.details});
+  bool isFav = false;
+  RatingModel? rating;
+  Product({
+    required this.id,
+    required this.productName,
+    required this.productDescription,
+    this.details,
+  });
 
   factory Product.fromJson(Map<String, dynamic> json) {
     var detailsList = json['details'] as List;
     List<ProductDetail> details =
         detailsList.map((detail) => ProductDetail.fromJson(detail)).toList();
     return Product(
-      id: json['Id'] ?? 0,
-      productName: json['ProductName'] ?? '',
-      productDescription: json['ProdductDescription'] ?? '',
+      id: json['id'] ?? 0,
+      productName: json['productName'] ?? '',
+      productDescription: json['prodductDescription'] ?? '',
       details: details,
     );
   }

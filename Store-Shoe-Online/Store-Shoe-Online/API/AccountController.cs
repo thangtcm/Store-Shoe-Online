@@ -76,7 +76,7 @@ namespace Store_Shoe_Online.API
                     var result = await _signInManager.PasswordSignInAsync(userName, userVm.Password, false, lockoutOnFailure: false);
                     if (result.Succeeded)
                     {
-                        return StatusCode(StatusCodes.Status404NotFound, ResponseResult.CreateResponse("Success", "Đăng nhập thành công thành công.", new UserInfoVM(userResult)));
+                        return StatusCode(StatusCodes.Status200OK, ResponseResult.CreateResponse("Success", "Đăng nhập thành công thành công.", new UserInfoVM(userResult)));
 
                     }
                 }
@@ -145,9 +145,9 @@ namespace Store_Shoe_Online.API
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    return StatusCode(StatusCodes.Status200OK, new { Message = $"Đăng ký tài khoản của {model.FullName} thành công." });
+                    return StatusCode(StatusCodes.Status200OK, ResponseResult.CreateResponse("Register Success", $"Đăng ký tài khoản của {model.FullName} thành công."));
                 }
-                return StatusCode(StatusCodes.Status500InternalServerError, new { Error = result.Errors });
+                return StatusCode(StatusCodes.Status500InternalServerError, ResponseResult.CreateResponse("Register Failed", $"{result.Errors}"));
             }
             catch (Exception ex)
             {
