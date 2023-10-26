@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_store_shoe/views/product/home.view.dart';
-import 'package:flutter_store_shoe/views/product/product_detail.dart';
+import 'package:flutter_store_shoe/views/product/product_details.dart';
+import 'package:flutter_store_shoe/views/profiles/settings.dart';
 
 class MainLayout extends StatefulWidget {
   const MainLayout({Key? key}) : super(key: key);
@@ -12,10 +13,10 @@ class _MainLayout extends State<MainLayout> {
   int myCurrentIndex = 0;
   List pages = [
     const HomeProductView(),
-    ProductDetail(),
-    ProductDetail(),
-    ProductDetail(),
-    ProductDetail()
+    const ProfileScreen(),
+    const ProfileScreen(),
+    const ProfileScreen(),
+    const ProfileScreen()
   ];
 
   @override

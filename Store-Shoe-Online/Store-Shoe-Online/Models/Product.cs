@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.CompilerServices;
 
 namespace Store_Shoe_Online.Models
 {
@@ -13,6 +14,7 @@ namespace Store_Shoe_Online.Models
         [DisplayName("Tên sản phẩm")]
         public string? ProductName { get; set; }
         [NotMapped]
+        [DisplayFormat(DataFormatString = "{0:0.###}")]
         public double Rating { get; set; }
         [DisplayName("Mô tả sản phẩm")]
         public string? ProdductDescription { get; set; }

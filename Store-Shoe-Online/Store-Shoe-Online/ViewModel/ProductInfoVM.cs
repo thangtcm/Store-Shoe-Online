@@ -1,4 +1,6 @@
-﻿namespace Store_Shoe_Online.ViewModel
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Store_Shoe_Online.ViewModel
 {
     public class ProductInfoVM
     {
@@ -6,6 +8,7 @@
         public string ProductName { get; set; }
         public string ProdductDescription { get; set; }
         public int CategoryId { get; set; }
+        [DisplayFormat(DataFormatString = "{0:0.###}")]
         public double Rating { get; set; }
         // Các thuộc tính khác bạn muốn bao gồm
         public List<ProductDetailDTO> Details { get; set; }

@@ -221,6 +221,7 @@ class ApiService {
         return errorResponse;
       }
     } catch (error) {
+      print('Lỗi ${error}');
       return ApiResponseListPage<Product>(
           code: 'Error',
           description: 'Lỗi không xác định',

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_store_shoe/models/ProductInfoVM.dart';
 import 'package:flutter_store_shoe/services/ColorHelper.dart';
+import 'package:flutter_store_shoe/views/product/product_details.dart';
 
 class ItemProduct extends StatelessWidget {
   final int index;
@@ -34,7 +35,8 @@ class ItemProduct extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  right: 3,
+                  right: 5.w,
+                  top: 10.w,
                   child: MaterialButton(
                     onPressed: () {
                       //yêu thích
@@ -44,8 +46,8 @@ class ItemProduct extends StatelessWidget {
                     materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     shape: const CircleBorder(),
                     child: Container(
-                      width: 25, // Đặt kích thước theo nhu cầu của bạn
-                      height: 25,
+                      width: 60.w, // Đặt kích thước theo nhu cầu của bạn
+                      height: 60.w,
                       decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                         color: Colors.white, // Màu nền của hình tròn
@@ -54,7 +56,7 @@ class ItemProduct extends StatelessWidget {
                         child: Icon(
                           Icons.favorite_outline_rounded,
                           color: false ? Colors.red : Colors.grey[400],
-                          size: 20,
+                          size: 50.w,
                         ),
                       ),
                     ),
@@ -64,9 +66,17 @@ class ItemProduct extends StatelessWidget {
             ),
           ),
           Container(
-            padding: EdgeInsets.only(right: 10.w, left: 10.w, top: 10.h),
+            padding: EdgeInsets.only(top: 10.w),
             child: TextButton(
-                onPressed: () => {print("Đi tới Product ID ${data.id}")},
+                onPressed: () => {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              ProductDetailView(product: data),
+                        ),
+                      )
+                    },
                 child: Text(data.productName,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
@@ -92,7 +102,7 @@ class ItemProduct extends StatelessWidget {
                           Icon(Icons.star_rate_rounded,
                               color: Colors.orange, size: 45.w),
                           SizedBox(width: 5.w),
-                          Text("${3.3}",
+                          Text("${data.rating}",
                               style: TextStyle(
                                   color: Colors.black,
                                   fontSize: 30.sp,

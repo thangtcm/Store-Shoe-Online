@@ -12,3 +12,4 @@ const imgRectangle28 = '$imagePath/img_rectangle28.png';
 const imgRectangle12 = '$imagePath/img_rectangle12.png';
 const imgRectangle14 = '$imagePath/img_rectangle14.png';
 const imgRectangle15 = '$imagePath/img_rectangle15.png';
+const imgProfiles = '$imagePath/Profile_Image.png';

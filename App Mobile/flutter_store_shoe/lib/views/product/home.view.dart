@@ -27,7 +27,7 @@ class _HomeScreenState extends State<HomeProductView> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Obx(
-        () => controller.isLoading.value || productController.isLoading.value
+        () => controller.isLoading.value
             ? const Center(
                 child: CircularProgressIndicator(),
               )
@@ -112,25 +112,34 @@ class _HomeScreenState extends State<HomeProductView> {
                     child: const CategoriesWidget(),
                   ),
                   const SizedBox(height: 30),
-                  Container(
-                    child: GridView.builder(
-                      shrinkWrap: true,
-                      primary: false,
-                      padding: EdgeInsets.only(
-                          top: 20.w, bottom: 230.h, left: 60.w, right: 60.w),
-                      gridDelegate:
-                          SliverGridDelegateWithFixedCrossAxisCountAndFixedHeight(
-                        crossAxisCount: 2,
-                        crossAxisSpacing: 40.w,
-                        mainAxisSpacing: 100.w,
-                        height: 0.28.sh,
-                      ),
-                      itemCount: productController.products.length,
-                      itemBuilder: (context, index) {
-                        final data = productController.products[index];
-                        return ItemProduct(index: index, data: data);
-                      },
-                    ),
+                  Obx(
+                    () => productController.isLoading.value
+                        ? const Center(
+                            child: CircularProgressIndicator(),
+                          )
+                        : Container(
+                            child: GridView.builder(
+                              shrinkWrap: true,
+                              primary: false,
+                              padding: EdgeInsets.only(
+                                  top: 20.w,
+                                  bottom: 10.h,
+                                  left: 60.w,
+                                  right: 60.w),
+                              gridDelegate:
+                                  SliverGridDelegateWithFixedCrossAxisCountAndFixedHeight(
+                                crossAxisCount: 2,
+                                crossAxisSpacing: 40.w,
+                                mainAxisSpacing: 100.w,
+                                height: MediaQuery.of(context).size.width * 0.7,
+                              ),
+                              itemCount: productController.products.length,
+                              itemBuilder: (context, index) {
+                                final data = productController.products[index];
+                                return ItemProduct(index: index, data: data);
+                              },
+                            ),
+                          ),
                   )
                 ],
               ),

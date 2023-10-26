@@ -118,7 +118,7 @@ namespace Store_Shoe_Online.Services
                         {
                             var ratingSum = ratingSumByProductId[product.Id];
                             var ratingCount = ratingCountByProductId[product.Id];
-                            product.Rating = ratingCount > 0 ? (double)ratingSum / ratingCount : 5.0;
+                            product.Rating = ratingCount > 0 ? (ratingSum / ratingCount) : 5.0;
                         }
                     }
                 }
