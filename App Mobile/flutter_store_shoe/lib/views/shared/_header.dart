@@ -2,11 +2,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:badges/badges.dart' as badges;
+import 'package:flutter_store_shoe/controller/cart.dart';
+import 'package:get/get.dart';
 
 class Header extends StatelessWidget {
   String NameHeader = "Default";
   int total = 0;
-  Header(this.NameHeader, {super.key});
+  bool? isBack = false;
+  Header(this.NameHeader, {this.isBack = false, super.key});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -25,7 +28,7 @@ class Header extends StatelessWidget {
           showBadge: true,
           ignorePointer: false,
           badgeContent: Text(
-            "${total}",
+            Get.find<CartController>().totalCart.toString(),
             style: const TextStyle(color: Colors.white),
           ),
           badgeStyle: const badges.BadgeStyle(

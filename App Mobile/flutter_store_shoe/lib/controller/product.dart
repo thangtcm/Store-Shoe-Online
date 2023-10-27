@@ -2,6 +2,7 @@
 
 import 'package:flutter_store_shoe/models/ProductInfoVM.dart';
 import 'package:flutter_store_shoe/services/ApiService.dart';
+import 'package:flutter_store_shoe/services/userPreferences.dart';
 import 'package:get/get.dart';
 
 class ProductController extends GetxController {
@@ -23,6 +24,21 @@ class ProductController extends GetxController {
       }
     } catch (e) {
       print(e.toString());
+    } finally {
+      isLoading(false);
+    }
+  }
+
+  Future<bool> updateFavorite(int productId) async {
+    try {
+      isLoading(true);
+      var user = await UserPreferences().getUserModel();
+      if (user == null || user.userId == null) return false;
+      await ApiService.updateFavorite(productId, user.userId!);
+      return true;
+    } catch (e) {
+      print(e.toString());
+      return false;
     } finally {
       isLoading(false);
     }

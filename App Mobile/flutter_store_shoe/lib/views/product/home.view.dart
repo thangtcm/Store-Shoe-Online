@@ -21,13 +21,13 @@ class HomeProductView extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeProductView> {
   String title = "Home";
-  CategoryController controller = Get.put(CategoryController());
-  ProductController productController = Get.put(ProductController());
+  // CategoryController controller = Get.put(CategoryController());
+  // ProductController productController = Get.put(ProductController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Obx(
-        () => controller.isLoading.value
+        () => Get.find<CategoryController>().isLoading.value
             ? const Center(
                 child: CircularProgressIndicator(),
               )
@@ -113,7 +113,7 @@ class _HomeScreenState extends State<HomeProductView> {
                   ),
                   const SizedBox(height: 30),
                   Obx(
-                    () => productController.isLoading.value
+                    () => Get.find<ProductController>().isLoading.value
                         ? const Center(
                             child: CircularProgressIndicator(),
                           )
@@ -133,9 +133,11 @@ class _HomeScreenState extends State<HomeProductView> {
                                 mainAxisSpacing: 100.w,
                                 height: MediaQuery.of(context).size.width * 0.7,
                               ),
-                              itemCount: productController.products.length,
+                              itemCount:
+                                  Get.find<ProductController>().products.length,
                               itemBuilder: (context, index) {
-                                final data = productController.products[index];
+                                final data = Get.find<ProductController>()
+                                    .products[index];
                                 return ItemProduct(index: index, data: data);
                               },
                             ),

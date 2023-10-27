@@ -196,12 +196,12 @@ namespace Store_Shoe_Online.API
                 var result = await _userValidator.ValidateAsync(_userManager, user);
                 if (!result.Succeeded)
                 {
-                    return StatusCode(StatusCodes.Status500InternalServerError, new { Error = result.Errors });
+                    return StatusCode(StatusCodes.Status404NotFound, new { Error = result.Errors });
                 }
                 result = await _passwordValidator.ValidateAsync(_userManager, user, model.Password);
                 if (!result.Succeeded)
                 {
-                    return StatusCode(StatusCodes.Status500InternalServerError, new { Error = result.Errors });
+                    return StatusCode(StatusCodes.Status404NotFound, new { Error = result.Errors });
                 }
                 Random random = new();
                 var code = random.Next(1000, 9999);

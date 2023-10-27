@@ -1,20 +1,29 @@
-// ignore_for_file: unused_local_variable, dead_code
+// ignore_for_file: unused_local_variable, dead_code, library_private_types_in_public_api
 
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_store_shoe/controller/cart.dart';
+import 'package:flutter_store_shoe/controller/product.dart';
 import 'package:flutter_store_shoe/models/ProductInfoVM.dart';
-import 'package:flutter_store_shoe/services/ColorHelper.dart';
 import 'package:flutter_store_shoe/views/product/product_details.dart';
+import 'package:flutter_store_shoe/services/ColorHelper.dart';
+import 'package:get/get.dart';
 
-class ItemProduct extends StatelessWidget {
+class ItemProduct extends StatefulWidget {
   final int index;
   final Product data;
 
   const ItemProduct({super.key, required this.index, required this.data});
+  @override
+  _ItemProductWidgetState createState() => _ItemProductWidgetState();
+}
 
+class _ItemProductWidgetState extends State<ItemProduct> {
   @override
   Widget build(BuildContext context) {
+    CartController controller = Get.find<CartController>();
+    ProductController productController = Get.find<ProductController>();
     return Card(
       elevation: 0,
       color: Colors.white,
@@ -27,7 +36,7 @@ class ItemProduct extends StatelessWidget {
                 Container(
                   alignment: Alignment.center,
                   child: ExtendedImage.network(
-                    data.details?[0].urlImage ?? "",
+                    widget.data.details?[0].urlImage ?? "",
                     cache: true,
                     width: double.infinity,
                     height: double.infinity,
@@ -39,13 +48,19 @@ class ItemProduct extends StatelessWidget {
                   top: 10.w,
                   child: MaterialButton(
                     onPressed: () {
-                      //yêu thích
+                      setState(() async {
+                        if (await productController
+                            .updateFavorite(widget.data.id)) {
+                          widget.data.isFav = !widget.data.isFav;
+                        }
+                      });
                     },
                     minWidth: 0,
                     padding: const EdgeInsets.all(0),
                     materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     shape: const CircleBorder(),
                     child: Container(
+                      alignment: Alignment.center,
                       width: 60.w, // Đặt kích thước theo nhu cầu của bạn
                       height: 60.w,
                       decoration: const BoxDecoration(
@@ -54,9 +69,12 @@ class ItemProduct extends StatelessWidget {
                       ),
                       child: Center(
                         child: Icon(
-                          Icons.favorite_outline_rounded,
-                          color: false ? Colors.red : Colors.grey[400],
-                          size: 50.w,
+                          widget.data.isFav
+                              ? Icons.favorite
+                              : Icons.favorite_outline_rounded,
+                          size: 45.w,
+                          color:
+                              widget.data.isFav ? Colors.red : Colors.grey[400],
                         ),
                       ),
                     ),
@@ -72,12 +90,13 @@ class ItemProduct extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) =>
-                              ProductDetailView(product: data),
+                          builder: (context) => ProductDetailView(
+                            product: widget.data,
+                          ),
                         ),
                       )
                     },
-                child: Text(data.productName,
+                child: Text(widget.data.productName,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     textAlign: TextAlign.start,
@@ -102,7 +121,7 @@ class ItemProduct extends StatelessWidget {
                           Icon(Icons.star_rate_rounded,
                               color: Colors.orange, size: 45.w),
                           SizedBox(width: 5.w),
-                          Text("${data.rating}",
+                          Text("${widget.data.rating}",
                               style: TextStyle(
                                   color: Colors.black,
                                   fontSize: 30.sp,
@@ -115,7 +134,7 @@ class ItemProduct extends StatelessWidget {
                         ],
                       ),
                       SizedBox(height: 10.h),
-                      Text("\$${data.details?[0].price}",
+                      Text("\$${widget.data.details?[0].price}",
                           style: TextStyle(
                               color: Colors.black,
                               fontSize: 48.sp,
@@ -126,7 +145,14 @@ class ItemProduct extends StatelessWidget {
               ),
               MaterialButton(
                 onPressed: () {
-                  print("click vao ${index} -- ${data.id}");
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ProductDetailView(
+                        product: widget.data,
+                      ),
+                    ),
+                  );
                 },
                 elevation: 0,
                 minWidth: 0,
@@ -137,8 +163,7 @@ class ItemProduct extends StatelessWidget {
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(20),
                         bottomRight: Radius.circular(20))),
-                child: Icon(Icons.shopping_cart_outlined,
-                    size: 45.w, color: Colors.white),
+                child: Icon(Icons.fullscreen, size: 60.w, color: Colors.white),
               ),
             ],
           ),
@@ -156,7 +181,7 @@ class ItemProduct extends StatelessWidget {
                           children: [
                             Row(
                               children: [
-                                for (var item in data.details!)
+                                for (var item in widget.data.details!)
                                   Container(
                                     decoration: ShapeDecoration(
                                       color: Colors.black,

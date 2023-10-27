@@ -1,7 +1,14 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:flutter/material.dart';
+import 'package:flutter_store_shoe/controller/cart.dart';
+import 'package:flutter_store_shoe/controller/category.dart';
+import 'package:flutter_store_shoe/controller/product.dart';
+import 'package:flutter_store_shoe/views/cart/cart_view.dart';
 import 'package:flutter_store_shoe/views/product/home.view.dart';
-import 'package:flutter_store_shoe/views/product/product_details.dart';
+import 'package:flutter_store_shoe/views/product/product_favorite.dart';
 import 'package:flutter_store_shoe/views/profiles/settings.dart';
+import 'package:get/get.dart';
 
 class MainLayout extends StatefulWidget {
   const MainLayout({Key? key}) : super(key: key);
@@ -11,10 +18,13 @@ class MainLayout extends StatefulWidget {
 
 class _MainLayout extends State<MainLayout> {
   int myCurrentIndex = 0;
+  CategoryController controller = Get.put(CategoryController());
+  ProductController productController = Get.put(ProductController());
+  CartController cartController = Get.put(CartController());
   List pages = [
     const HomeProductView(),
-    const ProfileScreen(),
-    const ProfileScreen(),
+    const ProductFavoriteView(),
+    const CartView(),
     const ProfileScreen(),
     const ProfileScreen()
   ];

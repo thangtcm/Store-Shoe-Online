@@ -16,7 +16,7 @@ class SplashView extends StatelessWidget {
     Timer(const Duration(seconds: 3), () async {
       var getUser = await UserPreferences().getUserModel();
       if (getUser != null && getUser.userId != '') {
-        Get.off(() => const MainLayout()); //
+        Get.off(() => MainLayout()); //
       } else {
         Get.off(() => const LoginView()); // Truyền controller vào LoginView
       }

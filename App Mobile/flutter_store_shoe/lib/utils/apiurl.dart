@@ -5,3 +5,4 @@ String apiConfirmEmail = "$mainUrl/Account/ConfirmEmail";
 String apiRegister = "$mainUrl/Account/Register";
 String apiGetCategorys = "$mainUrl/Category/GetCategorys";
 String apiGetProducts = "$mainUrl/Product/GetProducts";
+String apiUpdateFavorite = "$mainUrl/Product/UpdateFavorite";

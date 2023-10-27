@@ -132,6 +132,42 @@ class ApiService {
     }
   }
 
+  static Future<ApiResponse<ApiDefault>> updateFavorite(
+      int productId, String userId) async {
+    try {
+      final response = await _dio.post(
+        "$apiUpdateFavorite?productId=$productId&userId=$userId",
+        options: Options(
+            headers: {
+              HttpHeaders.contentTypeHeader: 'application/json',
+            },
+            followRedirects: false,
+            validateStatus: (status) {
+              return status! < 500;
+            }),
+      );
+      if (response.statusCode == 200) {
+        ApiResponse<ApiDefault> responseData = ApiResponse.fromJson(
+            response.data,
+            (json) => ApiDefault.fromJson(json),
+            response.statusCode);
+        return responseData;
+      } else {
+        final errorResponse = ApiResponse.fromJson(response.data,
+            (json) => ApiDefault.fromJson(json), response.statusCode);
+        return errorResponse;
+      }
+    } catch (error) {
+      print('Lỗi $error');
+      return ApiResponse<ApiDefault>(
+        code: 'Error',
+        description: 'Lỗi không xác định',
+        data: null,
+        statusCode: 404,
+      );
+    }
+  }
+
   static Future<ApiResponse<ApiDefault>> sendEmail(UserInfoVM user) async {
     try {
       final response = await _dio.post(

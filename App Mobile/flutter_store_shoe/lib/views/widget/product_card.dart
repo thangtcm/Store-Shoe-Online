@@ -4,7 +4,6 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_store_shoe/models/ProductInfoVM.dart';
-import 'package:flutter_store_shoe/views/widget/product_rate.dart';
 
 class ProductCard extends StatelessWidget {
   List<Product> lstProduct = [];
@@ -25,8 +24,8 @@ class ProductCard extends StatelessWidget {
       child: Container(
         height: 200,
         width: 141,
-        decoration: BoxDecoration(
-          borderRadius: const BorderRadius.all(Radius.circular(5)),
+        decoration: const BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(5)),
         ),
         child: Padding(
           padding: const EdgeInsets.all(10.0),
@@ -49,7 +48,7 @@ class ProductCard extends StatelessWidget {
                     .copyWith(fontSize: 12),
               ),
               Text(
-                "\$ 299.43",
+                "\$ ${lstProduct[random.nextInt(lstProduct.length)].details![0].price}",
                 overflow: TextOverflow.ellipsis,
                 maxLines: 2,
                 style: Theme.of(context)
