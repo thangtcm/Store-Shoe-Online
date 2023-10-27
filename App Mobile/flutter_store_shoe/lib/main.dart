@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
         builder: (ctx, child) {
           return GetMaterialApp(
             debugShowCheckedModeBanner: false,
-            home: const SplashView(),
+            home: const MainLayout(),
             builder: EasyLoading.init(),
           );
         });

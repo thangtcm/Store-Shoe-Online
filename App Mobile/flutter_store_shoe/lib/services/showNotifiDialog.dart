@@ -16,8 +16,11 @@ class ShowDialogNotify {
           : DialogType.success,
       body: Center(
         child: Text(
-          'Lỗi : $Message',
-          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          '${typenotify == typeNotify.Error ? "Lỗi: " : ""} $Message',
+          style: const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+              fontStyle: FontStyle.italic),
         ),
       ),
       title: title,

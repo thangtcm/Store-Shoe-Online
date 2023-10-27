@@ -71,6 +71,31 @@ namespace Store_Shoe_Online.Services
             return null;
         }
 
+        public async Task<ICollection<Product>> GetFavoriteListAsync(string userId)
+        {
+            var pfavorite = await _unitOfWork.FavoriteProductRepository.GetAllAsync(x => x.UserId == userId); 
+            var products = await _unitOfWork.ProductRepository.GetAllAsync(x => pfavorite.Select(p => p.ProductId).ToList().Contains(x.Id));
+            if (products.Count > 0)
+            {
+                var productIds = products.Select(p => p.Id).ToList();
+                var ratings = await _unitOfWork.RatingProductRepository.GetAllAsync(x => productIds.Contains(x.ProductId));
+                if (ratings.Count > 0)
+                {
+                    var ratingScores = ratings.GroupBy(r => r.ProductId)
+                        .ToDictionary(group => group.Key, group => group.Average(r => r.Rating));
+
+                    foreach (var product in products)
+                    {
+                        if (ratingScores.ContainsKey(product.Id))
+                        {
+                            product.Rating = ratingScores[product.Id];
+                        }
+                    }
+                }
+
+            }
+            return products;
+        }    
         public async Task<ICollection<Product>> GetListAsync()
         {
             var products = await _unitOfWork.ProductRepository.GetAllAsync();

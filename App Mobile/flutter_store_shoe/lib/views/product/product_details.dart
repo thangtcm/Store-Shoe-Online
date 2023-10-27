@@ -5,7 +5,9 @@ import 'package:carousel_slider/carousel_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_store_shoe/controller/cart.dart';
+import 'package:flutter_store_shoe/enum/typeNotify.dart';
 import 'package:flutter_store_shoe/models/ProductInfoVM.dart';
+import 'package:flutter_store_shoe/services/showNotifiDialog.dart';
 import 'package:flutter_store_shoe/views/reviews/reviews.dart';
 import 'package:flutter_store_shoe/views/widget/product_slider.dart';
 import 'package:flutter_store_shoe/views/widget/sale_product.dart';
@@ -344,12 +346,17 @@ class _ProductDetailState extends State<ProductDetailView> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     TextButton(
-                      onPressed: () => {
+                      onPressed: () async => {
                         cartController.addToCart(
                             widget.product.details![selectProduct],
                             1,
                             sizes[selectSize],
-                            widget.product.productName)
+                            widget.product.productName),
+                        await ShowDialogNotify.showNotify(
+                            "Add to cart success",
+                            "You have added product ${widget.product.productName} to your cart.",
+                            context,
+                            typenotify: typeNotify.Success)
                       },
                       child: Text(
                         "Add to Bag",
