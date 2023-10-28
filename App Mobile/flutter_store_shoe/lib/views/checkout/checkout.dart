@@ -234,7 +234,7 @@ class _CheckOutScreenState extends State<CheckOutView> {
                       MyTextField(
                           widthSize: 0,
                           hintText: "Your Address",
-                          controller: fullName,
+                          controller: address,
                           icon: Icons.home),
                       const SizedBox(
                         height: 30,

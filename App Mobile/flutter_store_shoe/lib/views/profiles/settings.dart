@@ -1,6 +1,7 @@
 // ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
+import 'package:flutter_store_shoe/services/userPreferences.dart';
 import 'package:flutter_store_shoe/views/profiles/profile_menu.dart';
 import 'package:flutter_store_shoe/views/profiles/profile_pic.dart';
 
@@ -48,7 +49,9 @@ class _ProfileScreenPageState extends State<ProfileScreen> {
               ProfileMenu(
                 text: "Log Out",
                 icon: Icons.logout_outlined,
-                press: () {},
+                press: () {
+                  UserPreferences().clearUserModel();
+                },
               ),
             ],
           ),
