@@ -7,7 +7,7 @@ namespace Store_Shoe_Online.Services.Interface
     {
         public Task<Product?> GetByIdAsync(int id);
         public Task<Product?> GetByIdAsync(int id, Func<IQueryable<Product>, IIncludableQueryable<Product, object>> includes);
-        public Task<ICollection<Product>> GetFavoriteListAsync(string userId);
+        public Task<ICollection<Product>> GetFavoriteListAsync(string userId, Func<IQueryable<Product>, IIncludableQueryable<Product, object>> includes);
         public Task<ICollection<Product>> GetListAsync();
         public Task<ICollection<Product>> GetListAsync(int categoryId, Func<IQueryable<Product>, IIncludableQueryable<Product, object>> includes);
         public Task Add(Product data);

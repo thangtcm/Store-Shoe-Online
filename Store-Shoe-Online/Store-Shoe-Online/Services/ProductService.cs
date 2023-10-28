@@ -71,10 +71,10 @@ namespace Store_Shoe_Online.Services
             return null;
         }
 
-        public async Task<ICollection<Product>> GetFavoriteListAsync(string userId)
+        public async Task<ICollection<Product>> GetFavoriteListAsync(string userId, Func<IQueryable<Product>, IIncludableQueryable<Product, object>> includes)
         {
-            var pfavorite = await _unitOfWork.FavoriteProductRepository.GetAllAsync(x => x.UserId == userId); 
-            var products = await _unitOfWork.ProductRepository.GetAllAsync(x => pfavorite.Select(p => p.ProductId).ToList().Contains(x.Id));
+            var pfavorite = await _unitOfWork.FavoriteProductRepository.GetAllAsync(x => x.UserId == userId && x.IsFavorite == true); 
+            var products = await _unitOfWork.ProductRepository.GetAllAsync(x => pfavorite.Select(p => p.ProductId).ToList().Contains(x.Id), includes);
             if (products.Count > 0)
             {
                 var productIds = products.Select(p => p.Id).ToList();

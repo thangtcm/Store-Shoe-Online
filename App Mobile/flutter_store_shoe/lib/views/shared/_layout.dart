@@ -5,6 +5,7 @@ import 'package:flutter_store_shoe/controller/cart.dart';
 import 'package:flutter_store_shoe/controller/category.dart';
 import 'package:flutter_store_shoe/controller/product.dart';
 import 'package:flutter_store_shoe/views/cart/cart_view.dart';
+import 'package:flutter_store_shoe/views/checkout/checkout.dart';
 import 'package:flutter_store_shoe/views/product/home.view.dart';
 import 'package:flutter_store_shoe/views/product/product_favorite.dart';
 import 'package:flutter_store_shoe/views/profiles/settings.dart';
@@ -25,7 +26,7 @@ class _MainLayout extends State<MainLayout> {
     const HomeProductView(),
     const ProductFavoriteView(),
     const CartView(),
-    const ProfileScreen(),
+    const CheckOutView(),
     const ProfileScreen()
   ];
 

@@ -34,6 +34,7 @@ class UserInfoVM {
   }
 
   Map<String, dynamic> toJson() => {
+        "userId": userId,
         "userName": userName,
         "email": email,
         "numberPhone": numberPhone,

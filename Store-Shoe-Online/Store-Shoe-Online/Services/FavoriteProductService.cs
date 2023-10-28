@@ -19,7 +19,7 @@ namespace Store_Shoe_Online.Services
             var product = await _unitOfWork.ProductRepository.GetAsync(x => x.Id == ProductId);
             if(user != null && product != null)
             {
-                var farvorite = await _unitOfWork.FavoriteProductRepository.GetAsync(x => x.UserId == user.Id);
+                var farvorite = await _unitOfWork.FavoriteProductRepository.GetAsync(x => x.UserId == user.Id && x.ProductId == ProductId);
                 if(farvorite == null)
                 {
                     farvorite = new FavoriteProduct()

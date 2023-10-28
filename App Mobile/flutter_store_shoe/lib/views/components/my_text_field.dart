@@ -8,18 +8,20 @@ class MyTextField extends StatelessWidget {
   void Function()? onPressed;
   bool obsecureText;
   TextEditingController controller;
+  double widthSize;
   MyTextField(
       {super.key,
       required this.hintText,
       this.icon,
       this.onPressed,
       this.obsecureText = false,
-      required this.controller});
+      required this.controller,
+      this.widthSize = 25});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 25),
+      margin: EdgeInsets.symmetric(horizontal: widthSize),
       padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
       child: TextField(
         controller: controller,

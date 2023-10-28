@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 using System.Text.Json;
 using Store_Shoe_Online.ViewModel;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Store_Shoe_Online.API
 {
@@ -57,6 +58,42 @@ namespace Store_Shoe_Online.API
                 return StatusCode(StatusCodes.Status200OK, ResponseResult.CreateResponse("Success", "Đã lấy danh sách thành công.", new { Data = productDTOs, MaxPage = maxpage }));
             }
             catch(Exception ex)
+            {
+                _logger.LogError(ex.Message.ToString());
+            }
+            return StatusCode(StatusCodes.Status404NotFound, ResponseResult.CreateResponse("Error Server", "Đã có lỗi xảy ra từ máy chủ."));
+        }
+
+        [HttpGet("GetProductFavorite")]
+        public async Task<IActionResult> GetProductFavorite(string userId, int? page)
+        {
+            try
+            {
+                var products = await _productService.GetFavoriteListAsync(userId, x => x.Include(x => x.Details!));
+                int pagesize = 10;
+                int maxpage = (products.Count / pagesize) + (products.Count % 10 == 0 ? 0 : 1);
+                int pagenumber = page == null || page < 0 ? 1 : page.Value;
+                PagedList<Product> lst = new(products, pagenumber, pagesize);
+                var productDTOs = lst.Select(product => new ProductInfoVM
+                {
+                    Id = product.Id,
+                    ProductName = product.ProductName!,
+                    ProdductDescription = product.ProdductDescription!,
+                    CategoryId = product.CategoryId,
+                    IsFavorite = true,
+                    Rating = product.Rating,
+                    Details = product.Details!.Select(detail => new ProductDetailDTO
+                    {
+                        Id = detail.Id,
+                        ProductId = detail.ProductId,
+                        Price = detail.Price,
+                        CodeColor = detail.CodeColor!,
+                        urlImage = detail.UrlImage!
+                    }).ToList()
+                }).ToList();
+                return StatusCode(StatusCodes.Status200OK, ResponseResult.CreateResponse("Success", "Đã lấy danh sách thành công.", new { Data = productDTOs, MaxPage = maxpage }));
+            }
+            catch (Exception ex)
             {
                 _logger.LogError(ex.Message.ToString());
             }

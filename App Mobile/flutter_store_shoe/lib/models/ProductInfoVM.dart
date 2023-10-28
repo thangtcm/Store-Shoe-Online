@@ -33,14 +33,15 @@ class Product {
   String productName;
   String productDescription;
   List<ProductDetail>? details;
-  bool isFav = false;
+  bool isFav;
   double? rating;
   Product(
       {required this.id,
       required this.productName,
       required this.productDescription,
       this.details,
-      this.rating});
+      this.rating,
+      this.isFav = false});
 
   factory Product.fromJson(Map<String, dynamic> json) {
     var detailsList = json['details'] as List;
@@ -51,6 +52,7 @@ class Product {
         productName: json['productName'] ?? '',
         productDescription: json['prodductDescription'] ?? '',
         details: details,
+        isFav: json['isFavorite'] ?? false,
         rating: (json['rating'] is int)
             ? json['rating'].toDouble()
             : json['rating']);

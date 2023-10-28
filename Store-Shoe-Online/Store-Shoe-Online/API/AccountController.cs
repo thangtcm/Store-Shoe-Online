@@ -99,7 +99,7 @@ namespace Store_Shoe_Online.API
                 {
                     return StatusCode(StatusCodes.Status404NotFound, ResponseResult.CreateResponse("NotFound", "Tài khoản không tồn tại."));
                 }
-                return StatusCode(StatusCodes.Status404NotFound, ResponseResult.CreateResponse("Success", $"Lấy thông tin tài khoản {user.FullName} thành công.", new UserInfoVM(user)));
+                return StatusCode(StatusCodes.Status200OK, ResponseResult.CreateResponse("Success", $"Lấy thông tin tài khoản {user.FullName} thành công.", new UserInfoVM(user)));
             }
             catch (Exception ex)
             {
@@ -121,7 +121,7 @@ namespace Store_Shoe_Online.API
                     UserInfoVM userVM = new UserInfoVM(user);
                     users.Add(userVM);
                 }
-                return StatusCode(StatusCodes.Status404NotFound, ResponseResult.CreateResponse("Success", $"Lấy dữ liệu thành công.", users));
+                return StatusCode(StatusCodes.Status200OK, ResponseResult.CreateResponse("Success", $"Lấy dữ liệu thành công.", users));
             }
             catch (Exception ex)
             {

@@ -10,6 +10,7 @@ namespace Store_Shoe_Online.ViewModel
         public int CategoryId { get; set; }
         [DisplayFormat(DataFormatString = "{0:0.###}")]
         public double Rating { get; set; }
+        public bool IsFavorite { get; set; }
         // Các thuộc tính khác bạn muốn bao gồm
         public List<ProductDetailDTO> Details { get; set; }
     }

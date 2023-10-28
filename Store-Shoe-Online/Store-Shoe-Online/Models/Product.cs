@@ -16,6 +16,8 @@ namespace Store_Shoe_Online.Models
         [NotMapped]
         [DisplayFormat(DataFormatString = "{0:0.###}")]
         public double Rating { get; set; }
+        [NotMapped]
+        public bool IsFavorite { get; set; }
         [DisplayName("Mô tả sản phẩm")]
         public string? ProdductDescription { get; set; }
         [JsonIgnore]

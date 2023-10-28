@@ -18,7 +18,6 @@ class UserPreferences {
   Future<UserInfoVM?> getUserModel() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? userModelJson = prefs.getString(_keyUserModel);
-
     if (userModelJson != null) {
       Map<String, dynamic> userModelMap = jsonDecode(userModelJson);
 

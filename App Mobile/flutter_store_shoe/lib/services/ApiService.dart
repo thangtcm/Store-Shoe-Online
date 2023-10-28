@@ -135,6 +135,7 @@ class ApiService {
   static Future<ApiResponse<ApiDefault>> updateFavorite(
       int productId, String userId) async {
     try {
+      print("$apiUpdateFavorite?productId=$productId&userId=$userId");
       final response = await _dio.post(
         "$apiUpdateFavorite?productId=$productId&userId=$userId",
         options: Options(
@@ -230,6 +231,39 @@ class ApiService {
         data: null,
         statusCode: 404,
       );
+    }
+  }
+
+  static Future<ApiResponseListPage<Product>> getProductFavorites(String userId,
+      {int page = 1}) async {
+    try {
+      final response = await _dio.get(
+        '$apiGetProductFavorite?userId=$userId&page=$page',
+        options: Options(
+            headers: {
+              HttpHeaders.contentTypeHeader: 'application/json',
+            },
+            followRedirects: false,
+            validateStatus: (status) {
+              return status! < 500;
+            }),
+      );
+      if (response.statusCode == 200) {
+        final apiResponse = ApiResponseListPage.fromJson(response.data,
+            (json) => Product.fromJson(json), response.statusCode);
+        return apiResponse;
+      } else {
+        final errorResponse = ApiResponseListPage.fromJson(response.data,
+            (json) => Product.fromJson(json), response.statusCode);
+        return errorResponse;
+      }
+    } catch (error) {
+      print('Lỗi ${error}');
+      return ApiResponseListPage<Product>(
+          code: 'Error',
+          description: 'Lỗi không xác định',
+          data: ApiResponseData<Product>(data: [], maxPage: 0),
+          statusCode: 404);
     }
   }
 

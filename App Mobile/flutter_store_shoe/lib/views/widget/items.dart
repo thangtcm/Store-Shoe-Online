@@ -48,11 +48,9 @@ class _ItemProductWidgetState extends State<ItemProduct> {
                   top: 10.w,
                   child: MaterialButton(
                     onPressed: () {
-                      setState(() async {
-                        if (await productController
-                            .updateFavorite(widget.data.id)) {
-                          widget.data.isFav = !widget.data.isFav;
-                        }
+                      setState(() {
+                        productController.updateFavorite(widget.data.id);
+                        widget.data.isFav = !widget.data.isFav;
                       });
                     },
                     minWidth: 0,
@@ -126,7 +124,7 @@ class _ItemProductWidgetState extends State<ItemProduct> {
                                   color: Colors.black,
                                   fontSize: 30.sp,
                                   fontWeight: FontWeight.w500)),
-                          Text("(${3.3})",
+                          Text("(${widget.data.rating})",
                               style: TextStyle(
                                   color: Colors.grey[600],
                                   fontSize: 30.sp,

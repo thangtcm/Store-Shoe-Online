@@ -20,9 +20,9 @@ class ProductFavoriteView extends StatefulWidget {
 class _ProductFavoriteState extends State<ProductFavoriteView> {
   String title = "Product Favorite";
   // CategoryController controller = Get.put(CategoryController());
-  // ProductController productController = Get.put(ProductController());
   @override
   Widget build(BuildContext context) {
+    Get.find<ProductController>().getProductFavorites();
     return Scaffold(
       body: Obx(
         () => Get.find<CategoryController>().isLoading.value
@@ -59,11 +59,12 @@ class _ProductFavoriteState extends State<ProductFavoriteView> {
                                 mainAxisSpacing: 100.w,
                                 height: MediaQuery.of(context).size.width * 0.7,
                               ),
-                              itemCount:
-                                  Get.find<ProductController>().products.length,
+                              itemCount: Get.find<ProductController>()
+                                  .productFavorites
+                                  .length,
                               itemBuilder: (context, index) {
                                 final data = Get.find<ProductController>()
-                                    .products[index];
+                                    .productFavorites[index];
                                 return ItemProduct(index: index, data: data);
                               },
                             ),

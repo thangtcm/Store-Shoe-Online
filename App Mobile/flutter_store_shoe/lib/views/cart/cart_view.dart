@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_store_shoe/controller/cart.dart';
 import 'package:flutter_store_shoe/models/CartItem.dart';
 import 'package:flutter_store_shoe/views/cart/empty_cart.dart';
+import 'package:flutter_store_shoe/views/checkout/checkout.dart';
 import 'package:flutter_store_shoe/views/shared/_header.dart';
 import 'package:get/get.dart';
 
@@ -112,7 +113,16 @@ class _CartListWidgetState extends State<CartView> {
         padding: const EdgeInsets.only(left: 30, right: 30, bottom: 20),
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(padding: const EdgeInsets.all(20)),
-          onPressed: controller.isEmptyCart ? null : () {},
+          onPressed: controller.isEmptyCart
+              ? null
+              : () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const CheckOutView(),
+                    ),
+                  );
+                },
           child: const Text("Check Out"),
         ),
       ),
