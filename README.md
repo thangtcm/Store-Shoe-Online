@@ -19,10 +19,11 @@ The project also delves into strategic online marketing, ensuring success and gr
 ## Technology stack 💎💎
 
 ### Languages 
-![Java](https://img.shields.io/badge/Language-Java-red) 
+![ASP.NET](https://img.shields.io/badge/Language-ASP.NET-red) 
+![Flutter](https://img.shields.io/badge/Language-Flutter-red) 
 
 ### Frameworks and Libs Website - API
-![itextpdf](https://img.shields.io/badge/ASP-MVC-Core-6-blue) 
+![itextpdf](https://img.shields.io/badge/ASP-MVC_Core_6-blue) 
 ![MSSQL JDBC](https://img.shields.io/badge/Library-EntityFrameworkCore-blue) 
 ![itextpdf](https://img.shields.io/badge/Library-Newtonsoft-blue) 
 ![itextpdf](https://img.shields.io/badge/Library-Identity-blue) 
