@@ -10,16 +10,11 @@
 The "Shoes Store" project is a dual-platform solution encompassing both a mobile application and a web interface. 
 The primary objective is to enhance the online shopping experience for customers and administrators, emphasizing user-friendly interfaces, secure transactions, and efficient management of products, orders, and customer information. 
 The project also delves into strategic online marketing, ensuring success and growth in the online shoe business across both app and web platforms.
-<p align="middle">
-  
-![image](https://user-images.githubusercontent.com/23113822/232237883-f366b735-6d84-4fd5-9081-d0675de7cb14.png)
-</p>
 <p>
   DEMO VIDEO : 
 </p>
+[![IMAGE ALT TEXT](https://github.com/thangtcm/Store-Shoe-Online/blob/main/image/screenshot_1706809583.png)](https://www.dropbox.com/scl/fi/k2oxeu1w2sijakycdrc75/final.mp4?rlkey=rusyi26jyetcxfqqzspz1zoyp&dl=0 "Video Title")
 
-<video src="https://www.dropbox.com/scl/fi/k2oxeu1w2sijakycdrc75/final.mp4?rlkey=rusyi26jyetcxfqqzspz1zoyp&dl=0"></video>
-  
 ## Technology stack 💎💎
 
 ### Languages 
