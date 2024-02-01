@@ -20,7 +20,7 @@ The project also delves into strategic online marketing, ensuring success and gr
 
 ### Languages 
 ![ASP.NET](https://img.shields.io/badge/Language-ASP.NET-red) 
-![Flutter](https://img.shields.io/badge/Language-Dark-black) 
+![Flutter](https://img.shields.io/badge/Language-Dart-blue) 
 
 ### Frameworks and Libs Website - API
 ![itextpdf](https://img.shields.io/badge/ASP-MVC_Core_6-blue) 
