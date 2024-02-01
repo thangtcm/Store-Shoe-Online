@@ -13,6 +13,7 @@ The project also delves into strategic online marketing, ensuring success and gr
 <p>
   DEMO VIDEO : 
 </p>
+
 [![IMAGE ALT TEXT](https://github.com/thangtcm/Store-Shoe-Online/blob/main/image/screenshot_1706809583.png)](https://www.dropbox.com/scl/fi/k2oxeu1w2sijakycdrc75/final.mp4?rlkey=rusyi26jyetcxfqqzspz1zoyp&dl=0 "Video Title")
 
 ## Technology stack 💎💎
